@@ -100,20 +100,20 @@ export const BLOG_POSTS: BlogPost[] = [
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     label: 'Github',
-    link: 'https://github.com/ibelick',
-  },
-  {
-    label: 'Twitter',
-    link: 'https://twitter.com/ibelick',
+    link: 'https://github.com/algotyrnt',
   },
   {
     label: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/ibelick',
+    link: 'https://www.linkedin.com/in/punjitha',
   },
   {
     label: 'Instagram',
-    link: 'https://www.instagram.com/ibelick',
+    link: 'https://www.instagram.com/algotyrnt',
+  },
+  {
+    label: 'Facebook',
+    link: 'https://facebook.com/algotyrnt',
   },
 ]
 
-export const EMAIL = 'your@email.com'
+export const EMAIL = 'x@tyrnt.co'
