@@ -72,7 +72,7 @@ export function Footer() {
       <div className="flex items-center justify-between">
         <a href="https://tyrnt.co" target="_blank">
           <TextLoop className="text-xs text-zinc-500">
-            <span>© 2024 algotyrnt</span>
+            <span>© 2025 algotyrnt</span>
             <span>Personal portfolio .</span>
           </TextLoop>
         </a>
