@@ -77,12 +77,6 @@ export const BLOG_POSTS: BlogPost[] = [
     link: 'https://medium.com/@tyrnt/understanding-devops-b17bad763ff7',
     uid: 'blog-1',
   },
-  {
-    title: 'Understanding DevOps',
-    description: 'In today’s fast-paced technological landscape, businesses must adapt quickly to remain competitive. One approach that has revolutionized software development and IT operations is DevOps.',
-    link: 'https://medium.com/@tyrnt/understanding-devops-b17bad763ff7',
-    uid: 'blog-1',
-  },
 ]
 
 export const SOCIAL_LINKS: SocialLink[] = [
