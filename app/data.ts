@@ -57,6 +57,24 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/algotyrnt/Endless-Runner-3D-UnityMobileGame',
     id: 'pro3',
   },
+  {
+    src: 'https://i.postimg.cc/y3PWJnnp/csr.png',
+    title: 'Colombo Street Race',
+    description: 'Mobile game',
+    paragraph1: 'The game "Colombo Street Race" is a 3D car race based in the city of Colombo in Sri Lanka. This game has four game mods, Four cars, and Three maps.',
+    paragraph2: '',
+    link: 'https://youtu.be/JnfKdvAaXt4?si=ke5wRvnnEdhD-SDJ',
+    id: 'pro4',
+  },
+  {
+    src: 'https://i.postimg.cc/DmKgXZB1/movecubic.png',
+    title: 'Move Cubic - 3D',
+    description: 'Mobile game',
+    paragraph1: '',
+    paragraph2: '',
+    link: '#',
+    id: 'pro5',
+  },
 ]
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
