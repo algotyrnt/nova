@@ -104,6 +104,7 @@ export default function Personal() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {PROJECTS.map((project) => (
             <MorphingDialog
+              key={project.id}
             transition={{
               type: 'spring',
               bounce: 0.05,
