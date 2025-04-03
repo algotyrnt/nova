@@ -91,7 +91,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 export const BLOG_POSTS: BlogPost[] = [
   {
     title: 'Ensuring thread safety with Optimistic and Pessimistic Locking',
-    description: 'In Spring Boot multi-user applications, ensuring thread safety is crucial.',
+    description: 'Ensuring thread safety in Spring Boot multi-user applications is crucial.',
     link: 'https://tyrnt.medium.com/ensuring-thread-safety-with-optimistic-and-pessimistic-locking-6bacb9b53de6',
     uid: 'blog3',
   },
@@ -103,7 +103,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     title: 'Travel Sri Lanka',
-    description: 'Travel Sri Lanka is one of my old blogs. I started this after my O/L exams. But it is not active now.',
+    description: 'One of my older blogs. I started this after my O/L exams. But it is not active now.',
     link: 'https://travelsinsrilanka.blogspot.com/',
     uid: 'blog1',
   },
