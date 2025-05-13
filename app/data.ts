@@ -122,10 +122,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
     label: 'Instagram',
     link: 'https://www.instagram.com/algotyrnt',
   },
-  {
-    label: 'CV',
-    link: 'https://drive.google.com/file/d/11yZInpOJ6153A8a5ntF4jegNDy6_n655/view?usp=sharing',
-  },
 ]
 
 export const EMAIL = 'x@tyrnt.co'
