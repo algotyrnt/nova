@@ -2,20 +2,14 @@
 import { motion } from 'framer-motion'
 import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
-import {
-  MorphingDialog,
-  MorphingDialogTrigger,
-  MorphingDialogContent,
-  MorphingDialogClose,
-  MorphingDialogContainer,
-  MorphingDialogTitle,
-  MorphingDialogImage,
-  MorphingDialogSubtitle,
-  MorphingDialogDescription,
-} from '@/components/ui/morphing-dialog'
 import Link from 'next/link'
 import { AnimatedBackground } from '@/components/ui/animated-background'
-import { PlusIcon } from 'lucide-react';
+import {
+  Disclosure,
+  DisclosureContent,
+  DisclosureTrigger,
+} from '@/components/motion-primitives/disclosure'
+import { useState } from 'react'
 import {
   PROJECTS,
   WORK_EXPERIENCE,
@@ -28,9 +22,7 @@ const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
+    transition: { staggerChildren: 0.15 },
   },
 }
 
@@ -78,6 +70,25 @@ function MagneticSocialLink({
 }
 
 export default function Personal() {
+  const [openProjectId, setOpenProjectId] = useState<string | null>(null)
+
+  const imageVariants = {
+    collapsed: { scale: 1, filter: 'blur(0px)' },
+    expanded: { scale: 1.1, filter: 'blur(3px)' },
+  }
+
+  const contentVariants = {
+    collapsed: { opacity: 0, y: 0 },
+    expanded: { opacity: 1, y: 0 },
+  }
+
+  const transition = {
+    type: 'spring',
+    stiffness: 26.7,
+    damping: 4.1,
+    mass: 0.2,
+  }
+
   return (
     <motion.main
       className="space-y-24"
@@ -85,109 +96,71 @@ export default function Personal() {
       initial="hidden"
       animate="visible"
     >
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
+      <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Computer Science Undergraduate with expertise in Machine Learning, DevOps, and Software Development.
+            Computer Science Undergraduate with expertise in Machine Learning,
+            DevOps, and Software Development.
           </p>
         </div>
       </motion.section>
 
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
+      <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
         <h3 className="mb-5 text-lg font-medium">Selected Projects</h3>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {PROJECTS.map((project) => (
-            <MorphingDialog
-              key={project.id}
-            transition={{
-              type: 'spring',
-              bounce: 0.05,
-              duration: 0.25,
-            }}
-          >
-            <MorphingDialogTrigger
-              style={{
-                borderRadius: '12px',
-              }}
-              className='flex max-w-[270px] flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900'
-            >
-              <MorphingDialogImage
-                src={project.src}
-                alt='Project image'
-                className='h-48 w-full object-cover'
-              />
-              <div className='flex grow flex-row items-end justify-between px-3 py-2'>
-                <div>
-                  <MorphingDialogTitle className='text-zinc-950 dark:text-zinc-50'>
-                    {project.title}
-                  </MorphingDialogTitle>
-                  <MorphingDialogSubtitle className='text-zinc-700 dark:text-zinc-400'>
-                    {project.description}
-                  </MorphingDialogSubtitle>
-                </div>
-                <button
-                  type='button'
-                  className='relative ml-1 flex h-6 w-6 shrink-0 scale-100 select-none appearance-none items-center justify-center rounded-lg border border-zinc-950/10 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-800 focus-visible:ring-2 active:scale-[0.98] dark:border-zinc-50/10 dark:bg-zinc-900 dark:text-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:focus-visible:ring-zinc-500'
-                  aria-label='Open dialog'
-                >
-                  <PlusIcon size={12} />
-                </button>
-              </div>
-            </MorphingDialogTrigger>
-            <MorphingDialogContainer>
-              <MorphingDialogContent
-                style={{
-                  borderRadius: '24px',
-                }}
-                className='pointer-events-auto relative flex h-auto w-full flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900 sm:w-[500px]'
+          {PROJECTS.map((project) => {
+            const isOpen = openProjectId === project.id
+            return (
+              <div
+                key={project.id}
+                className="relative h-[350px] w-[290px] overflow-hidden rounded-xl"
               >
-                <MorphingDialogImage
-                  src={project.src}
-                  alt='project image'
-                  className='h-full w-full'
-                />
-                <div className='p-6'>
-                  <MorphingDialogTitle className='text-2xl text-zinc-950 dark:text-zinc-50'>
-                    {project.title}
-                  </MorphingDialogTitle>
-                  <MorphingDialogSubtitle className='text-zinc-700 dark:text-zinc-400'>
-                    {project.description}
-                  </MorphingDialogSubtitle>
-                  <MorphingDialogDescription
-                    disableLayoutAnimation
-                    variants={{
-                      initial: { opacity: 0, scale: 0.8, y: 100 },
-                      animate: { opacity: 1, scale: 1, y: 0 },
-                      exit: { opacity: 0, scale: 0.8, y: 100 },
-                    }}
-                  >
-                    <p className='mt-2 text-zinc-500 dark:text-zinc-500'>
-                      {project.paragraph1}
-                    </p>
-                    <p className='text-zinc-500'>
-                      {project.paragraph2}
-                    </p>
-                    <a
-                      className='mt-2 inline-flex text-zinc-500 underline'
-                      href={project.link}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                    >
-                      check it out
-                    </a>
-                  </MorphingDialogDescription>
+                <div onClick={() => setOpenProjectId(isOpen ? null : project.id)}>
+                  <motion.img
+                    src={project.src}
+                    alt={project.title}
+                    className="pointer-events-none h-auto w-full select-none"
+                    animate={isOpen ? 'expanded' : 'collapsed'}
+                    variants={imageVariants}
+                    transition={transition}
+                  />
                 </div>
-                <MorphingDialogClose className='text-zinc-50' />
-              </MorphingDialogContent>
-            </MorphingDialogContainer>
-          </MorphingDialog>
-          ))}
+                <Disclosure
+                  onOpenChange={() =>
+                    setOpenProjectId(isOpen ? null : project.id)
+                  }
+                  open={isOpen}
+                  className="absolute bottom-0 left-0 right-0 rounded-xl bg-zinc-900 px-4 pt-2 dark:bg-zinc-50"
+                  variants={contentVariants}
+                  transition={transition}
+                >
+                  <DisclosureTrigger>
+                    <button
+                      className="w-full pb-2 text-left text-[14px] font-medium text-white dark:text-zinc-900"
+                      type="button"
+                    >
+                      {project.title}
+                    </button>
+                  </DisclosureTrigger>
+                  <DisclosureContent>
+                    <div className="flex flex-col pb-4 text-[13px] text-zinc-300 dark:text-zinc-700">
+                      <p className="line-clamp-3">{project.paragraph1}</p>
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-3 w-full rounded-[4px] border border-zinc-700 bg-zinc-900 px-4 py-1 text-zinc-50 transition-colors duration-300 hover:bg-zinc-800"
+                        >
+                          Learn More
+                        </a>
+                      )}
+                    </div>
+                  </DisclosureContent>
+                </Disclosure>
+              </div>
+            )
+          })}
         </div>
       </motion.section>
 
