@@ -70,7 +70,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     company: 'WSO2',
     title: 'intern',
     start: '2025 Jun',
-    end: 'Present',
+    end: '2026 Jun',
     link: 'https://wso2.com/',
     id: 'work1',
   },
