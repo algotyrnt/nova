@@ -106,6 +106,14 @@ export const SOCIAL_LINKS: SocialLink[] = [
     label: 'LinkedIn',
     link: 'https://www.linkedin.com/in/punjitha',
   },
+  {
+    label: 'Medium',
+    link: 'https://medium.com/@tyrnt',
+  },
+  {
+    label: 'YouTube',
+    link: 'https://youtube.com/@algotyrnt',
+  },
 ]
 
 export const EMAIL = 'x@tyrnt.co'
