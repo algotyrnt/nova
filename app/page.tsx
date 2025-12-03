@@ -4,10 +4,8 @@ import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
 import Link from 'next/link'
 import { AnimatedBackground } from '@/components/ui/animated-background'
-import { Disclosure, DisclosureContent, DisclosureTrigger } from '@/components/ui/disclosure'
 import { useState } from 'react'
 import {
-  PROJECTS,
   WORK_EXPERIENCE,
   BLOG_POSTS,
   EMAIL,
@@ -98,65 +96,6 @@ export default function Personal() {
             Computer Science Undergraduate with expertise in Machine Learning,
             DevOps, and Software Development.
           </p>
-        </div>
-      </motion.section>
-
-      <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
-        <h3 className="mb-5 text-lg font-medium">Selected Projects</h3>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {PROJECTS.map((project) => {
-            const isOpen = openProjectId === project.id
-            return (
-              <div
-                key={project.id}
-                className="relative h-[350px] w-[290px] overflow-hidden rounded-xl"
-              >
-                <div onClick={() => setOpenProjectId(isOpen ? null : project.id)}>
-                  <motion.img
-                    src={project.src}
-                    alt={project.title}
-                    className="pointer-events-none h-auto w-full select-none"
-                    animate={isOpen ? 'expanded' : 'collapsed'}
-                    variants={imageVariants}
-                    transition={transition}
-                  />
-                </div>
-                <Disclosure
-                  onOpenChange={() =>
-                    setOpenProjectId(isOpen ? null : project.id)
-                  }
-                  open={isOpen}
-                  className="absolute bottom-0 left-0 right-0 rounded-xl bg-zinc-900 px-4 pt-2 dark:bg-zinc-50"
-                  variants={contentVariants}
-                  transition={transition}
-                >
-                  <DisclosureTrigger>
-                    <button
-                      className="w-full pb-2 text-left text-[14px] font-medium text-white dark:text-zinc-900"
-                      type="button"
-                    >
-                      {project.title}
-                    </button>
-                  </DisclosureTrigger>
-                  <DisclosureContent>
-                    <div className="flex flex-col pb-4 text-[13px] text-zinc-300 dark:text-zinc-700">
-                      <p className="line-clamp-3">{project.description}</p>
-                      {project.link && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mt-3 w-full rounded-[4px] border border-zinc-700 bg-zinc-900 px-4 py-1 text-zinc-50 transition-colors duration-300 hover:bg-zinc-800"
-                        >
-                          Learn More
-                        </a>
-                      )}
-                    </div>
-                  </DisclosureContent>
-                </Disclosure>
-              </div>
-            )
-          })}
         </div>
       </motion.section>
 

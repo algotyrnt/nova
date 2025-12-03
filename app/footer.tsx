@@ -73,7 +73,7 @@ export function Footer() {
         <a href="https://tyrnt.co" target="_blank">
           <TextLoop className="text-xs text-zinc-500">
             <span>&copy; {new Date().getFullYear()} algotyrnt</span>
-            <span>Personal portfolio .</span>
+            <span>Personal website.</span>
           </TextLoop>
         </a>
         <div className="text-xs text-zinc-400">

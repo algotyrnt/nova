@@ -1,11 +1,3 @@
-type Project = {
-  src: string
-  title: string
-  description: string
-  link: string
-  id: string
-}
-
 type WorkExperience = {
   company: string
   title: string
@@ -26,37 +18,6 @@ type SocialLink = {
   label: string
   link: string
 }
-
-export const PROJECTS: Project[] = [
-  {
-    src: 'https://i.postimg.cc/0QLKg79t/shiftsl.png',
-    title: 'ShiftSL',
-    description: 'A simplified and smart roster management system to manage workforce effortlessly.',
-    link: 'https://shiftsl.com/',
-    id: 'pro4',
-  },
-  {
-    src: 'https://i.postimg.cc/FKHL09Px/adventurerunner.png',
-    title: 'Adventure Runner - 3D',
-    description: 'Adventure Runner - 3D is a free endless runner game, Project is open source and available on GitHub.',
-    link: 'https://github.com/algotyrnt/Endless-Runner-3D-UnityMobileGame',
-    id: 'pro3',
-  },
-  {
-    src: 'https://i.postimg.cc/y3PWJnnp/csr.png',
-    title: 'Colombo Street Race',
-    description: 'The game "Colombo Street Race" is a 3D car race based in the city of Colombo in Sri Lanka.',
-    link: 'https://youtu.be/JnfKdvAaXt4?si=ke5wRvnnEdhD-SDJ',
-    id: 'pro2',
-  },
-  {
-    src: 'https://i.postimg.cc/DmKgXZB1/movecubic.png',
-    title: 'Move Cubic - 3D',
-    description: 'Mobile game',
-    link: '#',
-    id: 'pro1',
-  },
-]
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
