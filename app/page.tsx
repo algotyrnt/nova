@@ -4,12 +4,7 @@ import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
 import Link from 'next/link'
 import { AnimatedBackground } from '@/components/ui/animated-background'
-import {
-  WORK_EXPERIENCE,
-  BLOG_POSTS,
-  EMAIL,
-  SOCIAL_LINKS,
-} from './data'
+import { WORK_EXPERIENCE, BLOG_POSTS, EMAIL, SOCIAL_LINKS } from './data'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -70,11 +65,15 @@ export default function Personal() {
       initial="hidden"
       animate="visible"
     >
-      <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Computer Science Undergraduate with expertise in Machine Learning,
-            DevOps, and Software Development.
+            Computer science undergraduate with a passion for turning ideas into
+            reality. I enjoy breaking things to understand how they work and
+            love exploring the deep rabbit holes of computer science.
           </p>
         </div>
       </motion.section>
