@@ -33,14 +33,14 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 export const BLOG_POSTS: BlogPost[] = [
   {
     title: 'Ensuring thread safety with Optimistic and Pessimistic Locking',
-    description: 'Ensuring thread safety in Spring Boot multi-user applications is crucial.',
+    description: 'Ensuring thread safety is crucial to avoid race conditions and unexpected behaviour.',
     link: 'https://tyrnt.medium.com/ensuring-thread-safety-with-optimistic-and-pessimistic-locking-6bacb9b53de6',
     uid: 'blog3',
   },
   {
     title: 'Understanding DevOps',
-    description: 'The approach that revolutionized the software development and IT operations landscape.',
-    link: 'https://medium.com/@tyrnt/understanding-devops-b17bad763ff7',
+    description: 'Cultural transformation that revolutionized the software development and operation.',
+    link: 'https://tyrnt.medium.com/understanding-devops-b17bad763ff7',
     uid: 'blog2',
   },
   {
@@ -62,7 +62,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     label: 'Medium',
-    link: 'https://medium.com/@tyrnt',
+    link: 'https://tyrnt.medium.com/',
   },
   {
     label: 'YouTube',
