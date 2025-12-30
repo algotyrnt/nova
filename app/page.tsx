@@ -10,7 +10,7 @@ import {
   EMAIL,
   SOCIAL_LINKS,
   SITE_DESCRIPTION,
-} from '../util/data'
+} from '@/util/data'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },

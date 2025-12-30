@@ -1,6 +1,11 @@
 import React from 'react'
-import { SITE_DESCRIPTION, SITE_NAME, WEBSITE_URL } from '@/util/data'
-import { SOCIAL_LINKS, EMAIL } from '../util/data'
+import {
+  EMAIL,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SOCIAL_LINKS,
+  WEBSITE_URL,
+} from '@/util/data'
 
 export default function Head() {
   const jsonLd = {
