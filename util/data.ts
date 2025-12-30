@@ -19,6 +19,26 @@ type SocialLink = {
   link: string
 }
 
+export const EMAIL = 'x@tyrnt.co'
+export const WEBSITE_URL = 'https://tyrnt.co'
+export const SITE_NAME = 'algotyrnt - Punjitha Bandara'
+export const SITE_DESCRIPTION =
+  'Software engineer specializing in backend development, systems engineering, and cloud computing.'
+
+export const SITE_KEYWORDS = [
+  'algotyrnt',
+  'Punjitha',
+  'Punjitha Bandara',
+  'Software Engineer',
+  'Backend Development',
+  'Systems Engineering',
+  'Cloud Computing',
+  'Cloud-native Platforms',
+  'Distributed Systems',
+  'Microservices',
+  'Portfolio',
+]
+
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
     company: 'WSO2',
@@ -33,19 +53,22 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 export const BLOG_POSTS: BlogPost[] = [
   {
     title: 'Ensuring thread safety with Optimistic and Pessimistic Locking',
-    description: 'Ensuring thread safety is crucial to avoid race conditions and unexpected behaviour.',
+    description:
+      'Ensuring thread safety is crucial to avoid race conditions and unexpected behaviour.',
     link: 'https://tyrnt.medium.com/ensuring-thread-safety-with-optimistic-and-pessimistic-locking-6bacb9b53de6',
     uid: 'blog3',
   },
   {
     title: 'Understanding DevOps',
-    description: 'Cultural transformation that revolutionized the software development and operation.',
+    description:
+      'Cultural transformation that revolutionized the software development and operation.',
     link: 'https://tyrnt.medium.com/understanding-devops-b17bad763ff7',
     uid: 'blog2',
   },
   {
     title: 'Travel Sri Lanka',
-    description: 'One of my older blogs. I started this after my O/L exams. But it is not active now.',
+    description:
+      'One of my older blogs. I started this after my O/L exams. But it is not active now.',
     link: 'https://travelsinsrilanka.blogspot.com/',
     uid: 'blog1',
   },
@@ -69,5 +92,3 @@ export const SOCIAL_LINKS: SocialLink[] = [
     link: 'https://youtube.com/@algotyrnt',
   },
 ]
-
-export const EMAIL = 'x@tyrnt.co'
