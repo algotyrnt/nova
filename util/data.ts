@@ -19,8 +19,8 @@ type SocialLink = {
   link: string
 }
 
-export const EMAIL = 'x@tyrnt.co'
-export const WEBSITE_URL = 'https://tyrnt.co'
+export const EMAIL = 'x@algotyrnt.com'
+export const WEBSITE_URL = 'https://algotyrnt.com'
 export const SITE_NAME = 'algotyrnt - Punjitha Bandara'
 export const SITE_DESCRIPTION =
   'Software Engineer specializing in scalable architectures, systems engineering, and cloud computing.'
