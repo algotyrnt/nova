@@ -23,7 +23,7 @@ export const EMAIL = 'x@tyrnt.co'
 export const WEBSITE_URL = 'https://tyrnt.co'
 export const SITE_NAME = 'algotyrnt - Punjitha Bandara'
 export const SITE_DESCRIPTION =
-  'Software engineer specializing in backend development, systems engineering, and cloud computing.'
+  'Software Engineer specializing in scalable architectures, systems engineering, and cloud computing.'
 
 export const SITE_KEYWORDS = [
   'algotyrnt',
