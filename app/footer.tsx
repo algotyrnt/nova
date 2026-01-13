@@ -71,7 +71,7 @@ export function Footer() {
   return (
     <footer className="mt-24 border-t border-zinc-100 px-0 py-4 dark:border-zinc-800">
       <div className="flex items-center justify-between">
-        <a href={WEBSITE_URL} target="_blank">
+        <a href="/">
           <TextLoop className="text-xs text-zinc-500">
             <span>&copy; {new Date().getFullYear()} algotyrnt</span>
             <span>Personal website.</span>
