@@ -7,13 +7,6 @@ type WorkExperience = {
   id: string
 }
 
-type BlogPost = {
-  title: string
-  description: string
-  link: string
-  uid: string
-}
-
 type SocialLink = {
   label: string
   link: string
@@ -39,6 +32,9 @@ export const SITE_KEYWORDS = [
   'Portfolio',
 ]
 
+export const ABOUT_TEXT = `Software Engineer specializing in scalable architectures, systems engineering, and cloud computing. 
+I enjoy building robust systems and solving complex problems with code. My experience ranges from crafting backend microservices to designing reliable cloud-native platforms.`
+
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
     company: 'WSO2',
@@ -50,29 +46,8 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
   },
 ]
 
-export const BLOG_POSTS: BlogPost[] = [
-  {
-    title: 'Ensuring thread safety with Optimistic and Pessimistic Locking',
-    description:
-      'Ensuring thread safety is crucial to avoid race conditions and unexpected behaviour.',
-    link: 'https://tyrnt.medium.com/ensuring-thread-safety-with-optimistic-and-pessimistic-locking-6bacb9b53de6',
-    uid: 'blog3',
-  },
-  {
-    title: 'Understanding DevOps',
-    description:
-      'Cultural transformation that revolutionized the software development and operation.',
-    link: 'https://tyrnt.medium.com/understanding-devops-b17bad763ff7',
-    uid: 'blog2',
-  },
-  {
-    title: 'Travel Sri Lanka',
-    description:
-      'One of my older blogs. I started this after my O/L exams. But it is not active now.',
-    link: 'https://travelsinsrilanka.blogspot.com/',
-    uid: 'blog1',
-  },
-]
+export const GITHUB_USERNAME = 'algotyrnt'
+export const MEDIUM_USERNAME = 'tyrnt'
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
