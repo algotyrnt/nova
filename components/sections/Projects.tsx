@@ -53,7 +53,7 @@ export function ProjectsSection() {
             animate="visible"
         >
             <div className="flex items-center justify-between mb-5">
-                <h3 className="text-lg font-medium">Projects</h3>
+                <h2 className="text-lg font-medium">Projects</h2>
                 <a
                     href={`https://github.com/${GITHUB_USERNAME}`}
                     target="_blank"
@@ -84,9 +84,9 @@ export function ProjectsSection() {
                         >
                             <div className="relative z-50 flex flex-col space-y-1">
                                 <div className="flex items-center justify-between">
-                                    <h4 className="font-medium dark:text-zinc-100">
+                                    <h3 className="font-medium dark:text-zinc-100">
                                         {project.name}
-                                    </h4>
+                                    </h3>
                                     <div className="flex items-center space-x-2 text-xs text-zinc-500 dark:text-zinc-400">
                                         {project.language && (
                                             <span className="flex items-center">

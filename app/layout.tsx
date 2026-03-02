@@ -28,6 +28,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(WEBSITE_URL),
   keywords: SITE_KEYWORDS,
   authors: [{ name: 'Punjitha Bandara', url: WEBSITE_URL }],
+  creator: 'Punjitha Bandara',
+  publisher: 'Punjitha Bandara',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
     title: SITE_NAME,
     description: SITE_DESCRIPTION,

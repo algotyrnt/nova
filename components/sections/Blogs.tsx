@@ -68,7 +68,7 @@ export function BlogsSection() {
             animate="visible"
         >
             <div className="flex items-center justify-between mb-3">
-                <h3 className="text-lg font-medium">Blog</h3>
+                <h2 className="text-lg font-medium">Blog</h2>
                 <a
                     href={`https://${MEDIUM_USERNAME}.medium.com`}
                     target="_blank"
@@ -98,9 +98,9 @@ export function BlogsSection() {
                             data-id={post.guid}
                         >
                             <div className="relative z-50 flex flex-col space-y-1 p-2">
-                                <h4 className="font-normal dark:text-zinc-100">
+                                <h3 className="font-normal dark:text-zinc-100">
                                     {post.title}
-                                </h4>
+                                </h3>
                                 <p className="text-zinc-500 dark:text-zinc-400 text-sm">
                                     {extractDescription(post.description)}
                                 </p>

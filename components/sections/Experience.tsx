@@ -18,7 +18,7 @@ export function ExperienceSection() {
             variants={VARIANTS_SECTION}
             transition={TRANSITION_SECTION}
         >
-            <h3 className="mb-5 text-lg font-medium">Experience</h3>
+            <h2 className="mb-5 text-lg font-medium">Experience</h2>
             <div className="flex flex-col space-y-0">
                 <AnimatedBackground
                     enableHover
@@ -40,9 +40,9 @@ export function ExperienceSection() {
                         >
                             <div className="relative z-50 flex w-full flex-row justify-between p-2">
                                 <div>
-                                    <h4 className="font-normal dark:text-zinc-100">
+                                    <h3 className="font-normal dark:text-zinc-100">
                                         {job.title}
-                                    </h4>
+                                    </h3>
                                     <p className="text-zinc-500 dark:text-zinc-400">
                                         {job.company}
                                     </p>
