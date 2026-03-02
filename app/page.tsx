@@ -14,15 +14,6 @@ const VARIANTS_CONTAINER = {
   },
 }
 
-const VARIANTS_SECTION = {
-  hidden: { opacity: 0, y: 20, filter: 'blur(8px)' },
-  visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
-}
-
-const TRANSITION_SECTION = {
-  duration: 0.3,
-}
-
 export default function Personal() {
   return (
     <motion.main

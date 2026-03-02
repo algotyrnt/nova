@@ -1,8 +1,8 @@
-import prettier from "eslint-plugin-prettier/recommended";
+import prettier from 'eslint-plugin-prettier/recommended'
 
 export default [
   {
-    ignores: [".next/", "node_modules/"]
+    ignores: ['.next/', 'node_modules/'],
   },
-  prettier
-];
+  prettier,
+]

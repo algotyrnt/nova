@@ -7,8 +7,6 @@ type WorkExperience = {
   id: string
 }
 
-
-
 type SocialLink = {
   label: string
   link: string
