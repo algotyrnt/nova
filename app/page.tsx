@@ -1,33 +1,10 @@
 'use client'
 import { motion } from 'framer-motion'
-import { Spotlight } from '@/components/ui/spotlight'
+import { ABOUT_TEXT, EMAIL, SOCIAL_LINKS, WORK_EXPERIENCE } from '@/util/data'
+import { ProjectsSection } from '@/components/sections/Projects'
+import { BlogsSection } from '@/components/sections/Blogs'
 import { Magnetic } from '@/components/ui/magnetic'
-import Link from 'next/link'
-import { AnimatedBackground } from '@/components/ui/animated-background'
-import {
-  WORK_EXPERIENCE,
-  BLOG_POSTS,
-  EMAIL,
-  SOCIAL_LINKS,
-  SITE_DESCRIPTION,
-} from '@/util/data'
-
-const VARIANTS_CONTAINER = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 },
-  },
-}
-
-const VARIANTS_SECTION = {
-  hidden: { opacity: 0, y: 20, filter: 'blur(8px)' },
-  visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
-}
-
-const TRANSITION_SECTION = {
-  duration: 0.3,
-}
+import { Spotlight } from '@/components/ui/spotlight'
 
 function MagneticSocialLink({
   children,
@@ -63,6 +40,23 @@ function MagneticSocialLink({
   )
 }
 
+const VARIANTS_CONTAINER = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+}
+
+const VARIANTS_SECTION = {
+  hidden: { opacity: 0, y: 20, filter: 'blur(8px)' },
+  visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+}
+
+const TRANSITION_SECTION = {
+  duration: 0.3,
+}
+
 export default function Personal() {
   return (
     <motion.main
@@ -76,7 +70,7 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
       >
         <div className="flex-1">
-          <p className="text-zinc-600 dark:text-zinc-400">{SITE_DESCRIPTION}</p>
+          <p className="text-zinc-600 dark:text-zinc-400 whitespace-pre-line">{ABOUT_TEXT}</p>
         </div>
       </motion.section>
 
@@ -84,7 +78,7 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Experience</h3>
+        <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
         <div className="flex flex-col space-y-2">
           {WORK_EXPERIENCE.map((job) => (
             <a
@@ -118,41 +112,9 @@ export default function Personal() {
         </div>
       </motion.section>
 
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-3 text-lg font-medium">Blog</h3>
-        <div className="flex flex-col space-y-0">
-          <AnimatedBackground
-            enableHover
-            className="h-full w-full rounded-lg bg-zinc-100 dark:bg-zinc-900/80"
-            transition={{
-              type: 'spring',
-              bounce: 0,
-              duration: 0.2,
-            }}
-          >
-            {BLOG_POSTS.map((post) => (
-              <Link
-                key={post.uid}
-                className="-mx-3 rounded-xl px-3 py-3"
-                href={post.link}
-                data-id={post.uid}
-              >
-                <div className="flex flex-col space-y-1">
-                  <h4 className="font-normal dark:text-zinc-100">
-                    {post.title}
-                  </h4>
-                  <p className="text-zinc-500 dark:text-zinc-400">
-                    {post.description}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </AnimatedBackground>
-        </div>
-      </motion.section>
+      <ProjectsSection />
+
+      <BlogsSection />
 
       <motion.section
         variants={VARIANTS_SECTION}
