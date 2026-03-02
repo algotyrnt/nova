@@ -1,6 +1,7 @@
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import { GITHUB_USERNAME } from '@/util/data'
 import { FadeIn } from '@/components/ui/fade-in'
+import { parse, HTMLElement } from 'node-html-parser'
 
 type Repo = {
     author: string
@@ -10,22 +11,64 @@ type Repo = {
     stars: number
 }
 
-async function getProjects() {
+function parseRepository(root: HTMLElement, el: HTMLElement): Repo {
+    const repoPath = el.querySelector("a")?.getAttribute("href")?.split("/") || [];
+    const [, author = "", name = ""] = repoPath;
+
+    const parseMetric = (index: number): number => {
+        try {
+            return (
+                Number(
+                    el
+                        .querySelectorAll("a.pinned-item-meta")
+                    [index]?.text?.replace(/\n/g, "")
+                        .trim()
+                ) || 0
+            );
+        } catch {
+            return 0;
+        }
+    };
+
+    const languageSpan = el.querySelector("span[itemprop='programmingLanguage']");
+
+    return {
+        author,
+        name,
+        description:
+            el.querySelector("p.pinned-item-desc")?.text?.replace(/\n/g, "").trim() || "",
+        language: languageSpan?.text || "",
+        // languageColor is optional in the new snippet, but our Repo type just needs the basics
+        stars: parseMetric(0),
+    };
+}
+
+async function getPinnedProjects(): Promise<Repo[]> {
     try {
-        const res = await fetch(
-            `https://pinned.berrysauce.dev/get/${GITHUB_USERNAME}`,
-            { next: { revalidate: 3600 } } // Cache for 1 hour
-        )
-        if (!res.ok) throw new Error('Failed to fetch pinned repos')
-        return res.json()
+        const res = await fetch(`https://github.com/${GITHUB_USERNAME}`, {
+            next: { revalidate: 3600 } // Cache for 1 hour
+        });
+
+        if (!res.ok) {
+            throw new Error('Failed to fetch github profile');
+        }
+
+        const html = await res.text();
+        const root = parse(html);
+
+        const pinned_repos = root
+            .querySelectorAll(".js-pinned-item-list-item")
+            .map((el) => parseRepository(root, el));
+
+        return pinned_repos;
     } catch (error) {
-        console.error('Error fetching github repos:', error)
-        return []
+        console.error('Error fetching github pinned repos via scraper:', error);
+        return [];
     }
 }
 
 export async function ProjectsSection() {
-    const projects: Repo[] = await getProjects()
+    const projects = await getPinnedProjects();
 
     if (projects.length === 0) return null
 
