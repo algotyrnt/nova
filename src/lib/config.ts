@@ -1,16 +1,6 @@
-type WorkExperience = {
-  company: string
-  title: string
-  start: string
-  end: string
-  link: string
-  id: string
-}
+import type { WorkExperience, SocialLink } from '@/types'
 
-type SocialLink = {
-  label: string
-  link: string
-}
+// ─── Site Identity ────────────────────────────────────────────────────────────
 
 export const EMAIL = 'x@algotyrnt.com'
 export const WEBSITE_URL = 'https://algotyrnt.com'
@@ -32,8 +22,12 @@ export const SITE_KEYWORDS = [
   'Portfolio',
 ]
 
-export const ABOUT_TEXT = `Software Engineer specializing in scalable architectures, systems engineering, and cloud computing. 
+// ─── About ────────────────────────────────────────────────────────────────────
+
+export const ABOUT_TEXT = `Software Engineer specializing in scalable architectures, systems engineering, and cloud computing.
 I enjoy building robust systems and solving complex problems with code. My experience ranges from crafting backend microservices to designing reliable cloud-native platforms.`
+
+// ─── Work Experience ──────────────────────────────────────────────────────────
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
@@ -46,8 +40,12 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
   },
 ]
 
+// ─── External Integrations ───────────────────────────────────────────────────
+
 export const GITHUB_USERNAME = 'algotyrnt'
 export const MEDIUM_USERNAME = 'tyrnt'
+
+// ─── Social Links ─────────────────────────────────────────────────────────────
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {

@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
-import { Header } from './header'
-import { Footer } from './footer'
+import { Header } from '@/components/layout/header'
+import { Footer } from '@/components/layout/footer'
 import { ThemeProvider } from 'next-themes'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -11,7 +11,7 @@ import {
   SITE_KEYWORDS,
   SITE_NAME,
   WEBSITE_URL,
-} from '@/util/data'
+} from '@/lib/config'
 
 export const viewport: Viewport = {
   width: 'device-width',

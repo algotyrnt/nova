@@ -1,5 +1,5 @@
 'use client'
-import { cn } from '@/util/utils'
+import { cn } from '@/lib/utils'
 import { AnimatePresence, Transition, motion } from 'motion/react'
 import {
   Children,
@@ -47,7 +47,7 @@ export function AnimatedBackground({
   }, [defaultValue])
 
   return Children.map(children, (child: any, index) => {
-    const id = child.props['data-id']
+    const id = child.props['data-id'] ?? `animated-${uniqueId}-${index}`
 
     const interactionProps = enableHover
       ? {
@@ -55,7 +55,7 @@ export function AnimatedBackground({
           onMouseLeave: () => handleSetActiveId(null),
         }
       : {
-          onClick: () => handleSetActiveId(id),
+          onClick: () => handleSetActiveId(activeId === id ? null : id),
         }
 
     return cloneElement(
@@ -73,13 +73,9 @@ export function AnimatedBackground({
               layoutId={`background-${uniqueId}`}
               className={cn('absolute inset-0', className)}
               transition={transition}
-              initial={{ opacity: defaultValue ? 1 : 0 }}
-              animate={{
-                opacity: 1,
-              }}
-              exit={{
-                opacity: 0,
-              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
             />
           )}
         </AnimatePresence>
