@@ -1,4 +1,4 @@
-import { GITHUB_USERNAME } from '@/lib/config'
+import { GITHUB_USERNAME, SITE_NAME } from '@/lib/config'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -72,6 +72,7 @@ export async function getPinnedProjects(): Promise<Repo[]> {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
+        'User-Agent': SITE_NAME,
       },
       body: JSON.stringify({
         query: PINNED_REPOS_QUERY,
