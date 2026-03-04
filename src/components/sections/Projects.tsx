@@ -64,7 +64,7 @@ export async function ProjectsSection() {
             '&:hover': { color: 'text.secondary' },
           }}
         >
-          GitHub ↗
+          see more
         </Link>
       </Stack>
 

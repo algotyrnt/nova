@@ -41,7 +41,7 @@ export async function BlogsSection() {
             '&:hover': { color: 'text.secondary' },
           }}
         >
-          Medium ↗
+          see more
         </Link>
       </Stack>
 
