@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import NextLink from 'next/link'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Page Not Found',
@@ -27,9 +27,11 @@ export default function NotFound() {
       <Typography color="text.secondary">
         Could not find the requested resource.
       </Typography>
-      <Button component={NextLink} href="/" variant="outlined" sx={{ mt: 2 }}>
-        Return Home
-      </Button>
+      <Link href="/" style={{ textDecoration: 'none' }}>
+        <Button variant="outlined" sx={{ mt: 2 }}>
+          Return Home
+        </Button>
+      </Link>
     </Box>
   )
 }
