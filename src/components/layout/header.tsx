@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 const NAV_LINKS = [
   { label: 'Work', href: '#work' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Blog', href: '#writing' },
+  { label: 'Blog', href: '#blog' },
 ]
 
 export function Header() {

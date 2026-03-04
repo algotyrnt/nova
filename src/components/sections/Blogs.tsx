@@ -12,8 +12,13 @@ export async function BlogsSection() {
   if (!blogs.length) return null
 
   return (
-    <Box component="section" id="writing" sx={{ scrollMarginTop: '80px' }}>
-      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2.5}>
+    <Box component="section" id="blog" sx={{ scrollMarginTop: '80px' }}>
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
+        mb={2.5}
+      >
         <Typography
           variant="h2"
           sx={{
@@ -107,7 +112,12 @@ export async function BlogsSection() {
                           >
                             {cat}
                             {i < Math.min(post.categories.length, 3) - 1 && (
-                              <Box component="span" sx={{ mx: 0.5, opacity: 0.4 }}>·</Box>
+                              <Box
+                                component="span"
+                                sx={{ mx: 0.5, opacity: 0.4 }}
+                              >
+                                ·
+                              </Box>
                             )}
                           </Typography>
                         ))}
