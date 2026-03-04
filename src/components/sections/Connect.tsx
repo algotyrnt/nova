@@ -46,7 +46,18 @@ export function ConnectSection() {
       </Typography>
 
       <StaggerWrapper>
-        <Stack direction="row" flexWrap="wrap" gap={1.5} alignItems="center">
+        <Stack
+          direction="row"
+          flexWrap="nowrap"
+          gap={1.5}
+          alignItems="center"
+          sx={{
+            overflowX: 'auto',
+            pb: 0.5,
+            scrollbarWidth: 'none',
+            '&::-webkit-scrollbar': { display: 'none' },
+          }}
+        >
           {SOCIAL_LINKS.map((link) => (
             <StaggerItem key={link.label}>
               <Link
@@ -57,9 +68,9 @@ export function ConnectSection() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 0.5,
-                  px: 2,
-                  py: 0.75,
-                  fontSize: '0.8rem',
+                  px: 1.25,
+                  py: 0.5,
+                  fontSize: '0.72rem',
                   color: 'text.secondary',
                   textDecoration: 'none',
                   letterSpacing: '0.01em',
