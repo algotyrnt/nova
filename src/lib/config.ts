@@ -1,66 +1,22 @@
 import type { WorkExperience, SocialLink } from '@/types'
 
-// ─── Site Identity ────────────────────────────────────────────────────────────
+export const EMAIL = process.env.EMAIL || ''
+export const WEBSITE_URL = process.env.WEBSITE_URL || ''
+export const SITE_NAME = process.env.SITE_NAME || ''
+export const SITE_DESCRIPTION = process.env.SITE_DESCRIPTION || ''
+export const SITE_KEYWORDS = process.env.SITE_KEYWORDS
+  ? JSON.parse(process.env.SITE_KEYWORDS)
+  : []
 
-export const EMAIL = 'x@algotyrnt.com'
-export const WEBSITE_URL = 'https://algotyrnt.com'
-export const SITE_NAME = 'algotyrnt - Punjitha Bandara'
-export const SITE_DESCRIPTION =
-  'Software Engineer specializing in scalable architectures, systems engineering, and cloud computing.'
+export const ABOUT_TEXT = process.env.ABOUT_TEXT || ''
 
-export const SITE_KEYWORDS = [
-  'algotyrnt',
-  'Punjitha',
-  'Punjitha Bandara',
-  'Software Engineer',
-  'Backend Development',
-  'Systems Engineering',
-  'Cloud Computing',
-  'Cloud-native Platforms',
-  'Distributed Systems',
-  'Microservices',
-  'Portfolio',
-]
+export const WORK_EXPERIENCE: WorkExperience[] = process.env.WORK_EXPERIENCE
+  ? JSON.parse(process.env.WORK_EXPERIENCE)
+  : []
 
-// ─── About ────────────────────────────────────────────────────────────────────
+export const GITHUB_USERNAME = process.env.GITHUB_USERNAME || ''
+export const MEDIUM_USERNAME = process.env.MEDIUM_USERNAME || ''
 
-export const ABOUT_TEXT = `Software Engineer specializing in scalable architectures, systems engineering, and cloud computing. I enjoy breaking things to understand how they work and love exploring the deep rabbit holes of computer science.`
-
-// ─── Work Experience ──────────────────────────────────────────────────────────
-
-export const WORK_EXPERIENCE: WorkExperience[] = [
-  {
-    company: 'WSO2',
-    title: 'intern',
-    start: '2025 Jun',
-    end: 'present',
-    link: 'https://wso2.com/',
-    id: 'work1',
-  },
-]
-
-// ─── External Integrations ───────────────────────────────────────────────────
-
-export const GITHUB_USERNAME = 'algotyrnt'
-export const MEDIUM_USERNAME = 'tyrnt'
-
-// ─── Social Links ─────────────────────────────────────────────────────────────
-
-export const SOCIAL_LINKS: SocialLink[] = [
-  {
-    label: 'Github',
-    link: 'https://github.com/algotyrnt',
-  },
-  {
-    label: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/punjitha',
-  },
-  {
-    label: 'Medium',
-    link: 'https://tyrnt.medium.com/',
-  },
-  {
-    label: 'YouTube',
-    link: 'https://youtube.com/@algotyrnt',
-  },
-]
+export const SOCIAL_LINKS: SocialLink[] = process.env.SOCIAL_LINKS
+  ? JSON.parse(process.env.SOCIAL_LINKS)
+  : []
