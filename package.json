@@ -2,6 +2,16 @@
     "name": "personal-site",
     "version": "2.0.1",
     "private": true,
+    "license": "MIT",
+    "author": {
+        "name": "Punjitha Bandara",
+        "email": "x@algotyrnt.com",
+        "url": "https://algotyrnt.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/algotyrnt/personal-site"
+    },
     "scripts": {
         "dev": "next dev",
         "build": "next build",
