@@ -108,7 +108,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Configuration
 
-All configuration is managed through environment variables (see `.env.example`). The site reads from `process.env` at runtime.
+All configuration is managed through environment variables (see `.env.example`). For statically generated pages, Next.js reads these from `process.env` at build time, so changing them requires a rebuild (or restarting the dev server) for changes to take effect.
 
 **Configuration variables:**
 
