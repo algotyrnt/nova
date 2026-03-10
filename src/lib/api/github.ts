@@ -2,7 +2,7 @@ import { GITHUB_USERNAME, SITE_NAME } from '@/lib/config'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-export type Repo = {
+type Repo = {
   author: string
   name: string
   description: string

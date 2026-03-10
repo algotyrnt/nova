@@ -3,12 +3,10 @@ import { XMLParser } from 'fast-xml-parser'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-export type MediumPost = {
+type MediumPost = {
   title: string
   pubDate: string
   link: string
-  /** Plain-text description with HTML stripped. */
-  description: string
   categories: string[]
 }
 
@@ -53,16 +51,6 @@ function extractText(field: XmlField): string {
   )
 }
 
-/** Strips HTML tags and tidies whitespace from a post description. */
-function stripHtml(content: string): string {
-  if (!content) return ''
-  return content
-    .replace(/<\/?[^>]+(>|$)/g, ' ')
-    .replace(/\s+/g, ' ')
-    .replace(/Continue reading on Medium »/g, '')
-    .trim()
-}
-
 function normalizeLink(link: XmlField): string {
   if (!link) return ''
   if (typeof link === 'string') return link
@@ -76,11 +64,6 @@ function normalizeLink(link: XmlField): string {
 type RawItem = Record<string, unknown>
 
 function parseItem(item: RawItem): MediumPost {
-  const rawDescription =
-    extractText(item.description as XmlField) ||
-    extractText(item.encoded as XmlField) ||
-    extractText(item.content as XmlField)
-
   const categories = Array.isArray(item.category)
     ? (item.category as unknown[])
         .map((c) => extractText(c as XmlField))
@@ -93,7 +76,6 @@ function parseItem(item: RawItem): MediumPost {
     title: extractText(item.title as XmlField),
     pubDate: (item.pubDate as string) ?? (item.published as string) ?? '',
     link: normalizeLink(item.link as XmlField),
-    description: stripHtml(rawDescription),
     categories,
   }
 }
