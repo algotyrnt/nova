@@ -2,7 +2,7 @@
 
 [![Release](https://img.shields.io/github/v/release/algotyrnt/nova?display_name=tag)](https://github.com/algotyrnt/nova/releases)
 [![CodeQL](https://github.com/algotyrnt/nova/actions/workflows/codeql.yml/badge.svg)](https://github.com/algotyrnt/nova/actions/workflows/codeql.yml)
-[![Lint and Type Check](https://github.com/algotyrnt/nova/actions/workflows/lint-and-type-check.yml/badge.svg)](https://github.com/algotyrnt/nova/actions/workflows/lint-and-type-check.yml)
+[![Lint and Type Check](https://github.com/algotyrnt/nova/actions/workflows/check.yml/badge.svg)](https://github.com/algotyrnt/nova/actions/workflows/check.yml)
 [![License: MIT](https://img.shields.io/github/license/algotyrnt/nova)](https://github.com/algotyrnt/nova/blob/main/LICENSE)
 
 A minimal, fast, and fully customizable personal portfolio site built with `Next.js` (App Router), `TypeScript`, `MUI`, and `Framer Motion`.
