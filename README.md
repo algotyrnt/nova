@@ -10,7 +10,6 @@ It can render your pinned GitHub repositories and latest Medium posts at build/r
 
 Live site: [algotyrnt.com](https://algotyrnt.com)
 
-
 ## Features
 
 - App Router + React Server Components
@@ -159,7 +158,3 @@ Set the same environment variables from `.env.example` in the Vercel project set
 npm run build
 npm run start
 ```
-
-## License
-
-MIT
