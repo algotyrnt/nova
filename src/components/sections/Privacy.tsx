@@ -12,6 +12,8 @@ interface PrivacyProps {
   onClose: () => void
 }
 
+const PRIVACY_POLICY_LAST_UPDATED = 'March 9, 2026'
+
 export function Privacy({ open, onClose }: PrivacyProps) {
   return (
     <Dialog
@@ -57,7 +59,7 @@ export function Privacy({ open, onClose }: PrivacyProps) {
               color: 'text.disabled',
             }}
           >
-            Last updated: March 9, 2026
+            Last updated: {PRIVACY_POLICY_LAST_UPDATED}
           </Typography>
         </Box>
       </DialogTitle>
