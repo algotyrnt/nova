@@ -36,7 +36,12 @@ export async function ProjectsSection() {
   return (
     <Box component="section" id="projects" sx={{ scrollMarginTop: '80px' }}>
       {/* Section header */}
-      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={4}>
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
+        mb={4}
+      >
         <Typography
           variant="h2"
           sx={{
@@ -76,7 +81,10 @@ export async function ProjectsSection() {
         }}
       >
         {projects.map((project) => (
-          <StaggerItem key={`${project.author}-${project.name}`} style={{ height: '100%' }}>
+          <StaggerItem
+            key={`${project.author}-${project.name}`}
+            style={{ height: '100%' }}
+          >
             <Link
               href={project.url}
               target="_blank"
@@ -101,7 +109,12 @@ export async function ProjectsSection() {
             >
               <Stack spacing={1.5} sx={{ flex: 1 }}>
                 {/* Name + arrow */}
-                <Stack direction="row" alignItems="flex-start" justifyContent="space-between" spacing={1}>
+                <Stack
+                  direction="row"
+                  alignItems="flex-start"
+                  justifyContent="space-between"
+                  spacing={1}
+                >
                   <Typography
                     component="h3"
                     sx={{
@@ -134,18 +147,30 @@ export async function ProjectsSection() {
 
                 {/* Language badge */}
                 {project.language && (
-                  <Stack direction="row" alignItems="center" spacing={0.75} sx={{ mt: 'auto', pt: 0.5 }}>
+                  <Stack
+                    direction="row"
+                    alignItems="center"
+                    spacing={0.75}
+                    sx={{ mt: 'auto', pt: 0.5 }}
+                  >
                     <Box
                       sx={{
                         width: 8,
                         height: 8,
                         borderRadius: '50%',
-                        bgcolor: LANG_COLORS[project.language] ?? 'text.disabled',
+                        bgcolor:
+                          LANG_COLORS[project.language] ?? 'text.disabled',
                         flexShrink: 0,
                         boxShadow: `0 0 0 1.5px ${LANG_COLORS[project.language] ?? 'rgba(0,0,0,0.15)'}22`,
                       }}
                     />
-                    <Typography sx={{ fontSize: '0.72rem', color: 'text.disabled', letterSpacing: '0.01em' }}>
+                    <Typography
+                      sx={{
+                        fontSize: '0.72rem',
+                        color: 'text.disabled',
+                        letterSpacing: '0.01em',
+                      }}
+                    >
                       {project.language}
                     </Typography>
                   </Stack>

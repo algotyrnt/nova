@@ -41,7 +41,12 @@ export function WorkSection() {
                   },
                 }}
               >
-                <Stack direction="row" justifyContent="space-between" alignItems="baseline" width="100%">
+                <Stack
+                  direction="row"
+                  justifyContent="space-between"
+                  alignItems="baseline"
+                  width="100%"
+                >
                   <Box>
                     <Typography
                       component="h3"

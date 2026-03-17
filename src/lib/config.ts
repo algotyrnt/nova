@@ -17,15 +17,14 @@ export const SITE_KEYWORDS = safeJsonParse(process.env.SITE_KEYWORDS, [])
 
 export const ABOUT_TEXT = process.env.ABOUT_TEXT || ''
 
-export const WORK_EXPERIENCE: WorkExperience[] = safeJsonParse<WorkExperience[]>(
-  process.env.WORK_EXPERIENCE,
-  []
-)
+export const WORK_EXPERIENCE: WorkExperience[] = safeJsonParse<
+  WorkExperience[]
+>(process.env.WORK_EXPERIENCE, [])
 
 export const GITHUB_USERNAME = process.env.GITHUB_USERNAME || ''
 export const MEDIUM_USERNAME = process.env.MEDIUM_USERNAME || ''
 
 export const SOCIAL_LINKS: SocialLink[] = safeJsonParse<SocialLink[]>(
   process.env.SOCIAL_LINKS,
-  []
+  [],
 )

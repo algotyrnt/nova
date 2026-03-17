@@ -68,7 +68,7 @@ export function Header() {
         transition={{ duration: 0.4, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
       >
         <Stack direction="row" spacing={0} alignItems="center">
-          {NAV_LINKS.map((item, i) => (
+          {NAV_LINKS.map((item) => (
             <Typography
               key={item.label}
               component="a"
