@@ -1,193 +1,160 @@
 # Nova
 
-A minimal, fast, and fully customizable personal portfolio site. Built with Next.js (App Router), MUI, and Framer Motion. Pulls live data from GitHub (pinned repos) and Medium (latest posts).
+A minimal, fast, and fully customizable personal portfolio site built with `Next.js` (App Router), `TypeScript`, `MUI`, and `Framer Motion`.
+It can render your pinned GitHub repositories and latest Medium posts at build/runtime with ISR.
 
-**Live:** [algotyrnt.com](https://algotyrnt.com)
+Live site: [algotyrnt.com](https://algotyrnt.com)
 
----
 
-## Preview
+## Features
 
-![Site Preview](.github/assets/preview.png)
-
----
+- App Router + React Server Components
+- Structured, env-driven content (no CMS required)
+- GitHub pinned projects via GraphQL API
+- Medium posts via RSS feed
+- SEO basics included (`sitemap.xml`, `robots.txt`, Open Graph image)
+- Vercel Analytics + Speed Insights integration
 
 ## Tech Stack
 
-|               |                                                                                                             |
-| ------------- | ----------------------------------------------------------------------------------------------------------- |
-| Framework     | [Next.js](https://nextjs.org/) (App Router, React Server Components)                                        |
-| Language      | TypeScript                                                                                                  |
-| UI Components | [Material UI (MUI)](https://mui.com/)                                                                       |
-| Animations    | [Framer Motion](https://www.framer.com/motion/)                                                             |
-| Analytics     | [Vercel Analytics](https://vercel.com/analytics) + [Speed Insights](https://vercel.com/docs/speed-insights) |
-
----
+| Area      | Tooling                                                                                                    |
+| --------- | ---------------------------------------------------------------------------------------------------------- |
+| Framework | [Next.js](https://nextjs.org/) 16                                                                          |
+| Language  | TypeScript                                                                                                 |
+| UI        | [Material UI (MUI)](https://mui.com/) + Emotion                                                            |
+| Animation | [Framer Motion](https://www.framer.com/motion/)                                                            |
+| Analytics | [Vercel Analytics](https://vercel.com/analytics), [Speed Insights](https://vercel.com/docs/speed-insights) |
 
 ## Project Structure
 
-```
+```text
 src/
-├── app/                    # Next.js App Router
-│   ├── layout.tsx          # Root layout (fonts, metadata, theme provider)
-│   ├── page.tsx            # Home page — composes all sections
-│   ├── error.tsx           # Error boundary
-│   ├── not-found.tsx       # 404 page
-│   ├── robots.ts           # robots.txt
-│   └── sitemap.ts          # sitemap.xml
+├── app/                # Next.js routes, metadata, robots, sitemap
 ├── components/
-│   ├── layout/             # Header and Footer
-│   ├── sections/           # Page sections: About, Work, Projects, Blogs, Connect
-│   ├── ThemeRegistry/      # MUI theme + Emotion SSR cache setup
-│   └── ui/                 # Animation primitives: FadeIn, Stagger
+│   ├── layout/         # Header, footer
+│   ├── sections/       # About, Work, Projects, Blogs, Connect, Privacy
+│   ├── ThemeRegistry/  # MUI + Emotion integration
+│   └── ui/             # Animation primitives
 ├── lib/
-│   ├── config.ts           # Configuration (loads from environment variables)
-│   └── api/
-│       ├── github.ts       # GitHub GraphQL API — fetches pinned repos
-│       └── medium.ts       # Medium RSS feed — fetches latest posts
-└── types/
-    └── index.ts            # Shared TypeScript types
+│   ├── api/            # GitHub + Medium fetchers
+│   └── config.ts       # Env parsing and typed config exports
+└── types/              # Shared TypeScript types
 ```
-
----
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js 20+
-- A GitHub personal access token (for the Projects section)
+- npm
+- Optional: GitHub personal access token for Projects section
 
-### 1. Clone the repo
+### 1. Clone
 
 ```bash
 git clone https://github.com/algotyrnt/nova.git
 cd nova
 ```
 
-### 2. Install dependencies
+### 2. Install
 
 ```bash
 npm install
 ```
 
-### 3. Set environment variables
+### 3. Configure environment
 
 ```bash
 cp .env.example .env.local
 ```
 
-Then open `.env.local` and configure your variables:
+Update `.env.local` with your content.
 
-```env
-# Required for GitHub integration
-GITHUB_TOKEN=your_github_personal_access_token
+Important notes:
 
-# Site configuration
-EMAIL=your-email@example.com
-WEBSITE_URL=https://yourwebsite.com
-SITE_NAME=Your Name - Your Title
-SITE_DESCRIPTION=Your professional description here.
-ABOUT_TEXT=Your about text describing your background and interests.
+- `SITE_KEYWORDS`, `WORK_EXPERIENCE`, and `SOCIAL_LINKS` must be valid JSON.
+- `GITHUB_TOKEN` is optional in code. If not set (or invalid), the Projects section simply returns no items.
+- `MEDIUM_USERNAME` controls the Medium feed endpoint.
 
-# JSON arrays (all must be valid JSON)
-SITE_KEYWORDS=["keyword1","keyword2","Software Engineer"]
-WORK_EXPERIENCE=[{"company":"Company Name","title":"Job Title","start":"YYYY MMM","end":"present","link":"https://company.com/","id":"work1"}]
-SOCIAL_LINKS=[{"label":"Github","link":"https://github.com/yourusername"},{"label":"LinkedIn","link":"https://www.linkedin.com/in/yourusername"}]
-
-# External integrations
-GITHUB_USERNAME=yourgithubusername
-MEDIUM_USERNAME=yourmediumusername
-```
-
-> The GitHub token only needs `read:user` scope. Without it, the Projects section will be gracefully hidden.
-
-### 4. Start the dev server
+### 4. Run locally
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open `http://localhost:3000`.
 
----
+## Configuration Reference
 
-## Configuration
+All values come from environment variables in `src/lib/config.ts`.
 
-All configuration is managed through environment variables (see `.env.example`). For statically generated pages, Next.js reads these from `process.env` at build time, so changing them requires a rebuild (or restarting the dev server) for changes to take effect.
+| Variable           | Purpose                                    |
+| ------------------ | ------------------------------------------ |
+| `EMAIL`            | Contact email used in Connect/footer areas |
+| `WEBSITE_URL`      | Canonical site URL for metadata/sitemap    |
+| `SITE_NAME`        | Site title and branding                    |
+| `SITE_DESCRIPTION` | Meta description                           |
+| `ABOUT_TEXT`       | About section body text                    |
+| `SITE_KEYWORDS`    | JSON array for SEO keywords                |
+| `WORK_EXPERIENCE`  | JSON array of work entries                 |
+| `SOCIAL_LINKS`     | JSON array of social links                 |
+| `GITHUB_USERNAME`  | Username used for pinned repos query       |
+| `GITHUB_TOKEN`     | Token used to call GitHub GraphQL API      |
+| `MEDIUM_USERNAME`  | Username used for Medium RSS feed          |
 
-**Configuration variables:**
+Example JSON values:
 
-- `EMAIL` — Contact email
-- `WEBSITE_URL` — Site URL
-- `SITE_NAME` — Site title
-- `SITE_DESCRIPTION` — Meta description
-- `SITE_KEYWORDS` — JSON array of keywords
-- `ABOUT_TEXT` — About section text
-- `WORK_EXPERIENCE` — JSON array of work history
-- `SOCIAL_LINKS` — JSON array of social links
-- `GITHUB_USERNAME` — GitHub username (for Projects section)
-- `MEDIUM_USERNAME` — Medium username (for Blogs section)
+```json
+{
+  "SITE_KEYWORDS": ["portfolio", "software engineer", "nextjs"],
+  "WORK_EXPERIENCE": [
+    {
+      "company": "Example Inc",
+      "title": "Software Engineer",
+      "start": "2023 Jan",
+      "end": "present",
+      "link": "https://example.com",
+      "id": "exp-1"
+    }
+  ],
+  "SOCIAL_LINKS": [
+    { "label": "Github", "link": "https://github.com/yourname" },
+    { "label": "LinkedIn", "link": "https://linkedin.com/in/yourname" }
+  ]
+}
+```
 
-**To remove a section**, delete its import from `src/app/page.tsx`.
+## Customizing Sections
 
----
+The homepage section order is defined in `src/app/page.tsx`.
+Add, remove, or reorder section components there.
+
+## Available Scripts
+
+```bash
+npm run dev    # Start development server
+npm run build  # Build for production
+npm run start  # Start production server
+npm run lint   # Run ESLint
+```
 
 ## Deployment
 
-The site is a standard Next.js application and can be deployed to any platform that supports Next.js:
+This is a standard Next.js app and can be deployed on Vercel or any Node-capable platform.
 
-1. **Build the project:**
+### Vercel (recommended)
 
-   ```bash
-   npm run build
-   ```
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/algotyrnt/nova)
 
-2. **Set environment variables** on your hosting platform (all variables from `.env.example`)
+Set the same environment variables from `.env.example` in the Vercel project settings.
 
-3. **Deploy** the built application
-
-**Requirements:**
-
-- Node.js 20+
-- All environment variables must be set
-- `GITHUB_TOKEN` is required for the Projects section to work
-
-### Deploying to Vercel
-
-This project includes Vercel Analytics and Speed Insights. To deploy to Vercel:
-
-1. **One-click deploy:**
-
-   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/algotyrnt/nova)
-
-2. **Or using Vercel CLI:**
-
-   ```bash
-   npm i -g vercel
-   vercel
-   ```
-
-3. **Set environment variables** in Vercel dashboard:
-   - Go to **Project Settings → Environment Variables**
-   - Add all variables from `.env.example`
-   - Redeploy for changes to take effect
-
-> Vercel Analytics and Speed Insights are automatically enabled when deployed to Vercel.
-
----
-
-## Scripts
+### Generic deployment flow
 
 ```bash
-npm run dev     # Start development server  (http://localhost:3000)
-npm run build   # Production build
-npm run start   # Start production server
-npm run lint    # Run ESLint
+npm run build
+npm run start
 ```
-
----
 
 ## License
 
-MIT — free to use as a template for your own personal site.
+MIT
