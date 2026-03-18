@@ -1,0 +1,38 @@
+# A workflow which sets up OSV-Scanner scanning for vulnerabilities on PRs and pushes.
+# Designed to work alongside Dependabot for existing dependency management.
+
+name: OSV-Scanner
+
+on:
+  pull_request:
+    branches: [ "main" ]
+  merge_group:
+    branches: [ "main" ]
+  push:
+    branches: [ "main" ]
+
+permissions:
+  # Require writing security events to upload SARIF file to security tab
+  security-events: write
+  # Read commit contents
+  contents: read
+  # Required by OSV-Scanner v2 to read workflow runs
+  actions: read
+
+jobs:
+  scan-push:
+    if: ${{ github.event_name == 'push' }}
+    uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v2.3.3"
+    with:
+      scan-args: |-
+        -r
+        --skip-git
+        ./
+  scan-pr:
+    if: ${{ github.event_name == 'pull_request' || github.event_name == 'merge_group' }}
+    uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable-pr.yml@v2.3.3"
+    with:
+      scan-args: |-
+        -r
+        --skip-git
+        ./
