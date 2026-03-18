@@ -16,6 +16,8 @@ permissions:
   security-events: write
   # Read commit contents
   contents: read
+  # Required by OSV-Scanner v2 to read workflow runs
+  actions: read
 
 jobs:
   scan-push:
