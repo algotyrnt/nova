@@ -21,6 +21,9 @@ export const WORK_EXPERIENCE: WorkExperience[] = safeJsonParse<
   WorkExperience[]
 >(process.env.WORK_EXPERIENCE, [])
 
+export const AUTHOR_NAME = process.env.AUTHOR_NAME || ''
+export const TWITTER_HANDLE = process.env.TWITTER_HANDLE || ''
+
 export const GITHUB_USERNAME = process.env.GITHUB_USERNAME || ''
 export const MEDIUM_USERNAME = process.env.MEDIUM_USERNAME || ''
 

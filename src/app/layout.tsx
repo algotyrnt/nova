@@ -7,10 +7,12 @@ import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import {
+  AUTHOR_NAME,
   SITE_DESCRIPTION,
   SITE_KEYWORDS,
   SITE_NAME,
   SOCIAL_LINKS,
+  TWITTER_HANDLE,
   WEBSITE_URL,
 } from '@/lib/config'
 
@@ -28,9 +30,9 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   metadataBase: new URL(WEBSITE_URL),
   keywords: SITE_KEYWORDS,
-  authors: [{ name: 'Punjitha Bandara', url: WEBSITE_URL }],
-  creator: 'Punjitha Bandara',
-  publisher: 'Punjitha Bandara',
+  authors: [{ name: AUTHOR_NAME, url: WEBSITE_URL }],
+  creator: AUTHOR_NAME,
+  publisher: AUTHOR_NAME,
   formatDetection: {
     email: false,
     address: false,
@@ -56,8 +58,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    site: '@algotyrnt',
-    creator: '@algotyrnt',
+    site: TWITTER_HANDLE ? `@${TWITTER_HANDLE}` : undefined,
+    creator: TWITTER_HANDLE ? `@${TWITTER_HANDLE}` : undefined,
     images: [`${WEBSITE_URL}/opengraph-image`],
   },
   alternates: {

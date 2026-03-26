@@ -96,6 +96,8 @@ All values come from environment variables in `src/lib/config.ts`.
 
 | Variable           | Purpose                                    |
 | ------------------ | ------------------------------------------ |
+| `AUTHOR_NAME`      | Full name used in page metadata            |
+| `TWITTER_HANDLE`   | Twitter/X username (without `@`) for SEO   |
 | `EMAIL`            | Contact email used in Connect/footer areas |
 | `WEBSITE_URL`      | Canonical site URL for metadata/sitemap    |
 | `SITE_NAME`        | Site title and branding                    |
