@@ -76,10 +76,18 @@ export function Footer() {
               MIT License
             </Link>
             {' | '}
-            <Link
+            <Box
               component="button"
-              onClick={openModal}
+              onClick={() => {
+                import('react').then((React) => {
+                  React.startTransition(() => {
+                    openModal()
+                  })
+                })
+              }}
               sx={{
+                fontSize: 'inherit',
+                fontFamily: 'inherit',
                 color: 'text.primary',
                 textDecoration: 'none',
                 background: 'none',
@@ -93,7 +101,7 @@ export function Footer() {
               }}
             >
               Privacy Policy
-            </Link>
+            </Box>
           </Typography>
         </Stack>
       </Box>
