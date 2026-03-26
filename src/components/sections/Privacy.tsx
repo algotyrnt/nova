@@ -4,6 +4,7 @@ import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import Box from '@mui/material/Box'
+import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 import { useTheme } from '@mui/material/styles'
@@ -40,7 +41,6 @@ const dialogContentSx = {
 }
 
 const dialogContentBoxSx = {
-  '& > *:not(:last-child)': { mb: { xs: 2, sm: 3 } },
   '& h2': {
     fontSize: { xs: '1.0625rem', sm: '1.125rem' },
     fontWeight: 600,
@@ -121,7 +121,7 @@ export function Privacy({ open, onClose }: PrivacyProps) {
       </DialogTitle>
 
       <DialogContent dividers sx={dialogContentSx}>
-        <Box sx={dialogContentBoxSx}>
+        <Stack spacing={{ xs: 2, sm: 3 }} sx={dialogContentBoxSx}>
           <Typography component="p">
             This privacy policy describes how (&quot;we&quot;, &quot;us&quot;,
             or &quot;our&quot;) collects, uses, and shares your information when
@@ -263,7 +263,7 @@ export function Privacy({ open, onClose }: PrivacyProps) {
             </Link>
             .
           </Typography>
-        </Box>
+        </Stack>
       </DialogContent>
     </Dialog>
   )
