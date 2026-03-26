@@ -10,6 +10,8 @@ It can render your pinned GitHub repositories and latest Medium posts at build/r
 
 Live site: [algotyrnt.com](https://algotyrnt.com)
 
+Contributions are documented in [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## Features
 
 - App Router + React Server Components
