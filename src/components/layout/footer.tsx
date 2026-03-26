@@ -78,13 +78,8 @@ export function Footer() {
             {' | '}
             <Box
               component="button"
-              onClick={() => {
-                import('react').then((React) => {
-                  React.startTransition(() => {
-                    openModal()
-                  })
-                })
-              }}
+              type="button"
+              onClick={openModal}
               sx={{
                 fontSize: 'inherit',
                 fontFamily: 'inherit',

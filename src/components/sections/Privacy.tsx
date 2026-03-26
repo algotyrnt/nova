@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
@@ -40,43 +40,41 @@ const dialogContentSx = {
   },
 }
 
-const dialogContentBoxSx = {
-  '& h2': {
-    fontSize: { xs: '1.0625rem', sm: '1.125rem' },
-    fontWeight: 600,
-    mt: { xs: 2.5, sm: 3 },
-    mb: { xs: 1.5, sm: 2 },
-    color: 'text.primary',
-  },
-  '& p': {
-    fontSize: { xs: '0.875rem', sm: '0.9rem' },
-    lineHeight: { xs: 1.6, sm: 1.7 },
-    letterSpacing: '0.005em',
-    color: 'text.secondary',
-    textAlign: { xs: 'left', sm: 'justify' },
-    hyphens: 'auto',
-  },
-  '& ul': {
-    pl: { xs: 2.5, sm: 3 },
-    '& li': {
-      fontSize: { xs: '0.875rem', sm: '0.9rem' },
-      lineHeight: { xs: 1.5, sm: 1.6 },
-      letterSpacing: '0.005em',
-      color: 'text.secondary',
-      mb: { xs: 0.75, sm: 1 },
-    },
-  },
-  '& a': {
-    color: 'text.primary',
-    textDecorationColor: 'rgba(0,0,0,0.25)',
-    textUnderlineOffset: 3,
-    fontWeight: 450,
-    '&:hover': { textDecorationColor: 'text.primary' },
-  },
-}
-
 export function Privacy({ open, onClose }: PrivacyProps) {
   const theme = useTheme()
+
+  const dialogContentBoxSx = useMemo(() => ({
+    '& h2': {
+      fontSize: { xs: '1.0625rem', sm: '1.125rem' },
+      fontWeight: 600,
+      color: 'text.primary',
+    },
+    '& p': {
+      fontSize: { xs: '0.875rem', sm: '0.9rem' },
+      lineHeight: { xs: 1.6, sm: 1.7 },
+      letterSpacing: '0.005em',
+      color: 'text.secondary',
+      textAlign: { xs: 'left', sm: 'justify' },
+      hyphens: 'auto',
+    },
+    '& ul': {
+      pl: { xs: 2.5, sm: 3 },
+      '& li': {
+        fontSize: { xs: '0.875rem', sm: '0.9rem' },
+        lineHeight: { xs: 1.5, sm: 1.6 },
+        letterSpacing: '0.005em',
+        color: 'text.secondary',
+        mb: { xs: 0.75, sm: 1 },
+      },
+    },
+    '& a': {
+      color: 'text.primary',
+      textDecorationColor: 'rgba(0,0,0,0.25)',
+      textUnderlineOffset: 3,
+      fontWeight: 450,
+      '&:hover': { textDecorationColor: theme.palette.text.primary },
+    },
+  }), [theme])
 
   return (
     <Dialog
@@ -85,7 +83,6 @@ export function Privacy({ open, onClose }: PrivacyProps) {
       maxWidth="md"
       fullWidth
       scroll="paper"
-      disableScrollLock
       transitionDuration={{ enter: 300, exit: 200 }}
       sx={{
         '& .MuiDialog-paper': {
