@@ -22,6 +22,7 @@ export function Privacy({ open, onClose }: PrivacyProps) {
       maxWidth="md"
       fullWidth
       scroll="paper"
+      keepMounted
       sx={(theme) => ({
         '& .MuiDialog-paper': {
           maxHeight: { xs: '90vh', sm: '85vh' },
