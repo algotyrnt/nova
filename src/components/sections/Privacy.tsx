@@ -22,14 +22,14 @@ export function Privacy({ open, onClose }: PrivacyProps) {
       maxWidth="md"
       fullWidth
       scroll="paper"
-      sx={{
+      sx={(theme) => ({
         '& .MuiDialog-paper': {
           maxHeight: { xs: '90vh', sm: '85vh' },
           m: { xs: 2, sm: 3 },
-          width: { xs: 'calc(100% - 32px)', sm: 'auto' },
+          width: { xs: `calc(100% - ${theme.spacing(4)})`, sm: 'auto' },
           borderRadius: { xs: 2, sm: 3 },
         },
-      }}
+      })}
     >
       <DialogTitle
         sx={{
