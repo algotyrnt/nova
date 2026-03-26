@@ -76,10 +76,13 @@ export function Footer() {
               MIT License
             </Link>
             {' | '}
-            <Link
+            <Box
               component="button"
+              type="button"
               onClick={openModal}
               sx={{
+                fontSize: 'inherit',
+                fontFamily: 'inherit',
                 color: 'text.primary',
                 textDecoration: 'none',
                 background: 'none',
@@ -93,7 +96,7 @@ export function Footer() {
               }}
             >
               Privacy Policy
-            </Link>
+            </Box>
           </Typography>
         </Stack>
       </Box>
