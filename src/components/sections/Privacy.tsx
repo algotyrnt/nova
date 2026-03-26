@@ -22,32 +22,36 @@ export function Privacy({ open, onClose }: PrivacyProps) {
       maxWidth="md"
       fullWidth
       scroll="paper"
-      sx={{
+      sx={(theme) => ({
         '& .MuiDialog-paper': {
-          maxHeight: '85vh',
+          maxHeight: { xs: '90vh', sm: '85vh' },
+          m: { xs: 2, sm: 3 },
+          width: { xs: `calc(100% - ${theme.spacing(4)})`, sm: 'auto' },
+          borderRadius: { xs: 2, sm: 3 },
         },
-      }}
+      })}
     >
       <DialogTitle
         sx={{
-          px: 3,
-          py: 2,
+          px: { xs: 2.5, sm: 3 },
+          py: { xs: 2, sm: 2.5 },
         }}
       >
         <Box
           sx={{
             display: 'flex',
-            alignItems: 'baseline',
+            alignItems: { xs: 'flex-start', sm: 'baseline' },
             justifyContent: 'space-between',
-            gap: 2,
-            flexWrap: 'wrap',
+            flexDirection: { xs: 'column', sm: 'row' },
+            gap: { xs: 0.5, sm: 2 },
           }}
         >
           <Typography
             sx={{
-              fontSize: '1.5rem',
+              fontSize: { xs: '1.25rem', sm: '1.5rem' },
               fontWeight: 650,
               color: 'text.primary',
+              lineHeight: 1.2,
             }}
           >
             Privacy Policy
@@ -55,7 +59,7 @@ export function Privacy({ open, onClose }: PrivacyProps) {
 
           <Typography
             sx={{
-              fontSize: '0.8125rem',
+              fontSize: { xs: '0.75rem', sm: '0.8125rem' },
               color: 'text.disabled',
             }}
           >
@@ -67,8 +71,8 @@ export function Privacy({ open, onClose }: PrivacyProps) {
       <DialogContent
         dividers
         sx={{
-          px: 3,
-          py: 3,
+          px: { xs: 2.5, sm: 3 },
+          py: { xs: 2.5, sm: 3 },
           overflowY: 'auto',
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
@@ -79,30 +83,30 @@ export function Privacy({ open, onClose }: PrivacyProps) {
       >
         <Box
           sx={{
-            '& > *:not(:last-child)': { mb: 3 },
+            '& > *:not(:last-child)': { mb: { xs: 2, sm: 3 } },
             '& h2': {
-              fontSize: '1.125rem',
+              fontSize: { xs: '1.0625rem', sm: '1.125rem' },
               fontWeight: 600,
-              mt: 3,
-              mb: 2,
+              mt: { xs: 2.5, sm: 3 },
+              mb: { xs: 1.5, sm: 2 },
               color: 'text.primary',
             },
             '& p': {
-              fontSize: '0.9rem',
-              lineHeight: 1.7,
+              fontSize: { xs: '0.875rem', sm: '0.9rem' },
+              lineHeight: { xs: 1.6, sm: 1.7 },
               letterSpacing: '0.005em',
               color: 'text.secondary',
-              textAlign: 'justify',
+              textAlign: { xs: 'left', sm: 'justify' },
               hyphens: 'auto',
             },
             '& ul': {
-              pl: 3,
+              pl: { xs: 2.5, sm: 3 },
               '& li': {
-                fontSize: '0.9rem',
-                lineHeight: 1.6,
+                fontSize: { xs: '0.875rem', sm: '0.9rem' },
+                lineHeight: { xs: 1.5, sm: 1.6 },
                 letterSpacing: '0.005em',
                 color: 'text.secondary',
-                mb: 1,
+                mb: { xs: 0.75, sm: 1 },
               },
             },
             '& a': {
