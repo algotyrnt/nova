@@ -28,37 +28,31 @@ jobs:
                   git config --global user.name 'github-actions[bot]'
                   git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-            - name: Check if version bump needed
+            - name: Decide release version
               id: check_version
               run: |
-                  # Check if the last commit was a version bump
-                  if git log -1 --pretty=%B | grep -q "Bump version to"; then
-                    echo "skip=true" >> $GITHUB_OUTPUT
-                    echo "Last commit was a version bump, skipping..."
-                  else
-                    echo "skip=false" >> $GITHUB_OUTPUT
-                  fi
+                  bash .github/scripts/decide-release-version.sh
 
             - name: Bump patch version
-              if: steps.check_version.outputs.skip == 'false'
+              if: steps.check_version.outputs.bump == 'true'
               id: version
               run: |
                   npm version patch -m "Bump version to %s [skip ci]"
-                  echo "new_version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+                  echo "new_version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
 
             - name: Push changes
-              if: steps.check_version.outputs.skip == 'false'
+              if: steps.check_version.outputs.bump == 'true'
               run: |
                   git push --follow-tags
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Create GitHub Release
-              if: steps.check_version.outputs.skip == 'false'
+              if: steps.check_version.outputs.release == 'true'
               uses: softprops/action-gh-release@v2
               with:
-                  tag_name: v${{ steps.version.outputs.new_version }}
-                  name: Release v${{ steps.version.outputs.new_version }}
+                  tag_name: v${{ steps.version.outputs.new_version || steps.check_version.outputs.new_version }}
+                  name: Release v${{ steps.version.outputs.new_version || steps.check_version.outputs.new_version }}
                   generate_release_notes: true
                   draft: false
                   prerelease: false
