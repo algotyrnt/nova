@@ -6,6 +6,7 @@ import DialogTitle from '@mui/material/DialogTitle'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
+import { useTheme } from '@mui/material/styles'
 
 interface PrivacyProps {
   open: boolean
@@ -14,7 +15,69 @@ interface PrivacyProps {
 
 const PRIVACY_POLICY_LAST_UPDATED = 'March 9, 2026'
 
+const dialogTitleSx = {
+  px: { xs: 2.5, sm: 3 },
+  py: { xs: 2, sm: 2.5 },
+} as const
+
+const dialogTitleBoxSx = {
+  display: 'flex',
+  alignItems: { xs: 'flex-start', sm: 'baseline' },
+  justifyContent: 'space-between',
+  flexDirection: { xs: 'column', sm: 'row' } as const,
+  gap: { xs: 0.5, sm: 2 },
+}
+
+const dialogContentSx = {
+  px: { xs: 2.5, sm: 3 },
+  py: { xs: 2.5, sm: 3 },
+  overflowY: 'auto' as const,
+  scrollbarWidth: 'none',
+  msOverflowStyle: 'none',
+  '&::-webkit-scrollbar': {
+    display: 'none',
+  },
+}
+
+const dialogContentBoxSx = {
+  '& > *:not(:last-child)': { mb: { xs: 2, sm: 3 } },
+  '& h2': {
+    fontSize: { xs: '1.0625rem', sm: '1.125rem' },
+    fontWeight: 600,
+    mt: { xs: 2.5, sm: 3 },
+    mb: { xs: 1.5, sm: 2 },
+    color: 'text.primary',
+  },
+  '& p': {
+    fontSize: { xs: '0.875rem', sm: '0.9rem' },
+    lineHeight: { xs: 1.6, sm: 1.7 },
+    letterSpacing: '0.005em',
+    color: 'text.secondary',
+    textAlign: { xs: 'left', sm: 'justify' },
+    hyphens: 'auto',
+  },
+  '& ul': {
+    pl: { xs: 2.5, sm: 3 },
+    '& li': {
+      fontSize: { xs: '0.875rem', sm: '0.9rem' },
+      lineHeight: { xs: 1.5, sm: 1.6 },
+      letterSpacing: '0.005em',
+      color: 'text.secondary',
+      mb: { xs: 0.75, sm: 1 },
+    },
+  },
+  '& a': {
+    color: 'text.primary',
+    textDecorationColor: 'rgba(0,0,0,0.25)',
+    textUnderlineOffset: 3,
+    fontWeight: 450,
+    '&:hover': { textDecorationColor: 'text.primary' },
+  },
+}
+
 export function Privacy({ open, onClose }: PrivacyProps) {
+  const theme = useTheme()
+
   return (
     <Dialog
       open={open}
@@ -22,31 +85,19 @@ export function Privacy({ open, onClose }: PrivacyProps) {
       maxWidth="md"
       fullWidth
       scroll="paper"
-      keepMounted
-      sx={(theme) => ({
+      disableScrollLock
+      transitionDuration={{ enter: 300, exit: 200 }}
+      sx={{
         '& .MuiDialog-paper': {
           maxHeight: { xs: '90vh', sm: '85vh' },
           m: { xs: 2, sm: 3 },
           width: { xs: `calc(100% - ${theme.spacing(4)})`, sm: 'auto' },
           borderRadius: { xs: 2, sm: 3 },
         },
-      })}
+      }}
     >
-      <DialogTitle
-        sx={{
-          px: { xs: 2.5, sm: 3 },
-          py: { xs: 2, sm: 2.5 },
-        }}
-      >
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: { xs: 'flex-start', sm: 'baseline' },
-            justifyContent: 'space-between',
-            flexDirection: { xs: 'column', sm: 'row' },
-            gap: { xs: 0.5, sm: 2 },
-          }}
-        >
+      <DialogTitle sx={dialogTitleSx}>
+        <Box sx={dialogTitleBoxSx}>
           <Typography
             sx={{
               fontSize: { xs: '1.25rem', sm: '1.5rem' },
@@ -69,56 +120,8 @@ export function Privacy({ open, onClose }: PrivacyProps) {
         </Box>
       </DialogTitle>
 
-      <DialogContent
-        dividers
-        sx={{
-          px: { xs: 2.5, sm: 3 },
-          py: { xs: 2.5, sm: 3 },
-          overflowY: 'auto',
-          scrollbarWidth: 'none',
-          msOverflowStyle: 'none',
-          '&::-webkit-scrollbar': {
-            display: 'none',
-          },
-        }}
-      >
-        <Box
-          sx={{
-            '& > *:not(:last-child)': { mb: { xs: 2, sm: 3 } },
-            '& h2': {
-              fontSize: { xs: '1.0625rem', sm: '1.125rem' },
-              fontWeight: 600,
-              mt: { xs: 2.5, sm: 3 },
-              mb: { xs: 1.5, sm: 2 },
-              color: 'text.primary',
-            },
-            '& p': {
-              fontSize: { xs: '0.875rem', sm: '0.9rem' },
-              lineHeight: { xs: 1.6, sm: 1.7 },
-              letterSpacing: '0.005em',
-              color: 'text.secondary',
-              textAlign: { xs: 'left', sm: 'justify' },
-              hyphens: 'auto',
-            },
-            '& ul': {
-              pl: { xs: 2.5, sm: 3 },
-              '& li': {
-                fontSize: { xs: '0.875rem', sm: '0.9rem' },
-                lineHeight: { xs: 1.5, sm: 1.6 },
-                letterSpacing: '0.005em',
-                color: 'text.secondary',
-                mb: { xs: 0.75, sm: 1 },
-              },
-            },
-            '& a': {
-              color: 'text.primary',
-              textDecorationColor: 'rgba(0,0,0,0.25)',
-              textUnderlineOffset: 3,
-              fontWeight: 450,
-              '&:hover': { textDecorationColor: 'text.primary' },
-            },
-          }}
-        >
+      <DialogContent dividers sx={dialogContentSx}>
+        <Box sx={dialogContentBoxSx}>
           <Typography component="p">
             This privacy policy describes how (&quot;we&quot;, &quot;us&quot;,
             or &quot;our&quot;) collects, uses, and shares your information when
