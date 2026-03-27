@@ -1,6 +1,4 @@
 'use client'
-
-// Adapted from https://mui.com/material-ui/guides/nextjs/
 import * as React from 'react'
 import { CacheProvider } from '@emotion/react'
 import createCache, { type Options as CacheOptions } from '@emotion/cache'
