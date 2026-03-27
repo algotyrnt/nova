@@ -4,7 +4,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 import Link from '@mui/material/Link'
-import { StaggerWrapper, StaggerItem } from '@/components/ui/Stagger'
+import { StaggerWrapper, StaggerItem } from '@/components/ui/stagger'
 
 // Real GitHub language colors
 const LANG_COLORS: Record<string, string> = {
@@ -28,7 +28,7 @@ const LANG_COLORS: Record<string, string> = {
   Dart: '#00B4AB',
 }
 
-export async function ProjectsSection() {
+export async function Projects() {
   const projects = await getPinnedProjects()
 
   if (!projects.length) return null
@@ -158,10 +158,9 @@ export async function ProjectsSection() {
                         width: 8,
                         height: 8,
                         borderRadius: '50%',
-                        bgcolor:
-                          LANG_COLORS[project.language] ?? 'text.disabled',
+                        bgcolor: LANG_COLORS[project.language] ?? '#aaa',
                         flexShrink: 0,
-                        boxShadow: `0 0 0 1.5px ${LANG_COLORS[project.language] ?? 'rgba(0,0,0,0.15)'}22`,
+                        boxShadow: `0 0 0 1.5px ${LANG_COLORS[project.language] ?? '#aaa'}22`,
                       }}
                     />
                     <Typography

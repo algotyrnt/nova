@@ -3,9 +3,9 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 import Link from '@mui/material/Link'
-import { StaggerWrapper, StaggerItem } from '@/components/ui/Stagger'
+import { StaggerWrapper, StaggerItem } from '@/components/ui/stagger'
 
-export function WorkSection() {
+export function Work() {
   return (
     <Box component="section" id="work" sx={{ scrollMarginTop: '80px' }}>
       <Typography
