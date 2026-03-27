@@ -1,36 +1,18 @@
 # Contributing
 
-## Scope
+This is a personal portfolio template built with Next.js, TypeScript, MUI, and Framer Motion. Contributions should keep the project fast, minimal, and easy to customize.
 
-This repository contains a personal portfolio site built with Next.js, TypeScript, MUI, and Framer Motion. Contributions should stay aligned with the project's goals: keep the site fast, accessible, maintainable, and easy to customize.
-
-## Prerequisites
-
-- Node.js 20+
-- npm
-
-## Local Setup
-
-1. Fork the repository and clone your fork.
-2. Install dependencies:
+## Setup
 
 ```bash
+git clone https://github.com/algotyrnt/nova.git
+cd nova
 npm install
-```
-
-3. Create your local environment file:
-
-```bash
 cp .env.example .env.local
-```
-
-4. Start the development server:
-
-```bash
 npm run dev
 ```
 
-## Before You Submit Changes
+## Before Opening a PR
 
 Open a GitHub issue before starting work so the change has a clear tracking record and discussion thread.
 
@@ -38,42 +20,23 @@ Run the project checks before opening a pull request:
 
 ```bash
 npm run check
-```
-
-If you make a change that affects production behavior, also verify the production build locally:
-
-```bash
 npm run build
 ```
 
-## Development Guidelines
+## Guidelines
 
 - Keep changes focused and minimal.
-- Preserve the existing project structure unless a clear refactor is necessary.
-- Prefer typed, reusable code over ad hoc logic.
-- Follow the existing code style and formatting conventions.
-- Avoid introducing new dependencies unless they are clearly justified.
-- Keep animations and UI enhancements performant and accessible.
-- Do not commit secrets or real tokens. Use `.env.local` for local configuration.
-
-## Content and Configuration Changes
-
-Many site values are driven by environment variables in `src/lib/config.ts`. When changing configuration behavior:
-
-- Keep environment parsing type-safe.
-- Document any new required variables in `README.md` and `.env.example`.
-- Preserve backward compatibility where practical.
+- Follow existing code style and structure.
+- Avoid adding new dependencies without a clear reason.
+- Document any new environment variables in `README.md` and `.env.example`.
+- No secrets or real tokens in commits — use `.env.local`.
 
 ## Pull Requests
 
-When opening a pull request:
-
-- Reference the GitHub issue related to the change.
+- Reference an issue.
 - Explain what changed and why.
-- Link related issues if applicable.
-- Include screenshots or recordings for visible UI changes.
-- Note any new environment variables, dependencies, or migration steps.
-- Ensure linting, type checking, and build verification have passed.
+- Include screenshots for UI changes.
+- Confirm `check` and `build` pass.
 
 ## Commit Messages
 
