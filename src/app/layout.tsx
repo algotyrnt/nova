@@ -3,14 +3,16 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
-import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry'
+import ThemeRegistry from '@/components/theme/registry'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import {
+  AUTHOR_NAME,
   SITE_DESCRIPTION,
   SITE_KEYWORDS,
   SITE_NAME,
   SOCIAL_LINKS,
+  TWITTER_HANDLE,
   WEBSITE_URL,
 } from '@/lib/config'
 
@@ -28,9 +30,9 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   metadataBase: new URL(WEBSITE_URL),
   keywords: SITE_KEYWORDS,
-  authors: [{ name: 'Punjitha Bandara', url: WEBSITE_URL }],
-  creator: 'Punjitha Bandara',
-  publisher: 'Punjitha Bandara',
+  authors: [{ name: AUTHOR_NAME, url: '/' }],
+  creator: AUTHOR_NAME,
+  publisher: AUTHOR_NAME,
   formatDetection: {
     email: false,
     address: false,
@@ -39,12 +41,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    url: WEBSITE_URL,
+    url: '/',
     siteName: SITE_NAME,
     type: 'website',
     images: [
       {
-        url: `${WEBSITE_URL}/opengraph-image`,
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: SITE_NAME,
@@ -56,12 +58,12 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    site: '@algotyrnt',
-    creator: '@algotyrnt',
-    images: [`${WEBSITE_URL}/opengraph-image`],
+    site: TWITTER_HANDLE ? `@${TWITTER_HANDLE}` : undefined,
+    creator: TWITTER_HANDLE ? `@${TWITTER_HANDLE}` : undefined,
+    images: ['/opengraph-image'],
   },
   alternates: {
-    canonical: WEBSITE_URL,
+    canonical: '/',
   },
   category: 'personal',
 }
@@ -69,6 +71,29 @@ export const metadata: Metadata = {
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
+  display: 'swap',
+})
+
+const JSON_LD = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${WEBSITE_URL}/#website`,
+      name: SITE_NAME,
+      url: WEBSITE_URL,
+      description: SITE_DESCRIPTION,
+    },
+    {
+      '@type': 'Person',
+      '@id': `${WEBSITE_URL}/#person`,
+      name: SITE_NAME,
+      url: WEBSITE_URL,
+      jobTitle: 'Software Engineer',
+      description: SITE_DESCRIPTION,
+      sameAs: SOCIAL_LINKS.map((s) => s.link),
+    },
+  ],
 })
 
 export default function RootLayout({
@@ -81,52 +106,13 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@graph': [
-                {
-                  '@type': 'WebSite',
-                  '@id': `${WEBSITE_URL}/#website`,
-                  name: SITE_NAME,
-                  url: WEBSITE_URL,
-                  description: SITE_DESCRIPTION,
-                },
-                {
-                  '@type': 'Person',
-                  '@id': `${WEBSITE_URL}/#person`,
-                  name: SITE_NAME,
-                  url: WEBSITE_URL,
-                  jobTitle: 'Software Engineer',
-                  description: SITE_DESCRIPTION,
-                  sameAs: SOCIAL_LINKS.map((s) => s.link),
-                },
-              ],
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON_LD }}
         />
       </head>
-      <body className={`${inter.variable}`}>
+      <body className={inter.variable}>
         <ThemeRegistry>
-          <div
-            style={{
-              display: 'flex',
-              minHeight: '100vh',
-              width: '100%',
-              flexDirection: 'column',
-              fontFamily: 'var(--font-inter)',
-            }}
-          >
-            <div
-              style={{
-                position: 'relative',
-                margin: '0 auto',
-                width: '100%',
-                maxWidth: '600px',
-                flex: 1,
-                padding: '0 20px',
-              }}
-            >
+          <div className="site-shell">
+            <div className="site-shell__inner">
               <Header />
               {children}
               <SpeedInsights />

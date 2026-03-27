@@ -1,109 +1,103 @@
 import { MEDIUM_USERNAME } from '@/lib/config'
-import { XMLParser } from 'fast-xml-parser'
-
-// ─── Types ────────────────────────────────────────────────────────────────────
-
-type MediumPost = {
-  title: string
-  pubDate: string
-  link: string
-  categories: string[]
-}
-
-// ─── Constants ────────────────────────────────────────────────────────────────
+import type { MediumPost } from '@/lib/types'
 
 const MEDIUM_FEED_URL = `https://medium.com/feed/@${MEDIUM_USERNAME}`
 const MAX_POSTS = 4
+const REQUEST_TIMEOUT_MS = 5000
 
-const parser = new XMLParser({
-  ignoreAttributes: false,
-  attributeNamePrefix: '',
-  removeNSPrefix: true,
-  cdataPropName: '__cdata',
-})
+/** Unwrap <![CDATA[...]]> if present, otherwise trim. */
+function stripCDATA(s: string): string {
+  const m = s.match(/^<!\[CDATA\[([\s\S]*?)\]\]>$/)
+  return m ? m[1].trim() : s.trim()
+}
 
-// ─── Helpers (internal) ───────────────────────────────────────────────────────
-
-type XmlField =
-  | string
-  | number
-  | boolean
-  | Record<string, unknown>
-  | null
-  | undefined
-
-/** Extracts a plain string from any XML field shape produced by fast-xml-parser. */
-function extractText(field: XmlField): string {
-  if (field == null) return ''
-  if (typeof field !== 'object') return String(field)
-
-  const obj = field as Record<string, unknown>
-  return (
-    (obj.__cdata as string) ||
-    (obj['#text'] as string) ||
-    (obj.text as string) ||
-    (obj.term as string) ||
-    (obj.label as string) ||
-    (obj._ as string) ||
-    (obj.value as string) ||
-    (Object.values(obj).find((v) => typeof v === 'string') as string) ||
-    ''
+/** Return the text content of the first matching element. */
+function tagText(xml: string, tag: string): string {
+  const m = xml.match(
+    new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${tag}>`, 'i'),
   )
+  return m ? stripCDATA(m[1]) : ''
 }
 
-function normalizeLink(link: XmlField): string {
-  if (!link) return ''
-  if (typeof link === 'string') return link
-  if (typeof link === 'object') {
-    const href = (link as Record<string, unknown>)?.href
-    if (typeof href === 'string') return href
+/** Return text content of every matching element. */
+function allTagText(xml: string, tag: string): string[] {
+  const re = new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${tag}>`, 'gi')
+  const out: string[] = []
+  let m: RegExpExecArray | null
+  while ((m = re.exec(xml)) !== null) {
+    const t = stripCDATA(m[1])
+    if (t) out.push(t)
   }
-  return ''
+  return out
 }
 
-type RawItem = Record<string, unknown>
+/**
+ * Resolve an item's link.
+ * Handles RSS 2.0  : <link>https://…</link>
+ * Handles Atom     : <link rel="alternate" href="https://…" />
+ */
+function resolveLink(xml: string): string {
+  const atom = xml.match(/<link[^>]+href=["']([^"']+)["']/)
+  if (atom) return atom[1]
+  return tagText(xml, 'link')
+}
 
-function parseItem(item: RawItem): MediumPost {
-  const categories = Array.isArray(item.category)
-    ? (item.category as unknown[])
-        .map((c) => extractText(c as XmlField))
-        .filter(Boolean)
-    : item.category
-      ? [extractText(item.category as XmlField)]
-      : []
+/** Split the feed XML into individual <item> or <entry> blocks. */
+function extractBlocks(xml: string, tag: 'item' | 'entry'): string[] {
+  const re = new RegExp(`<${tag}[\\s>][\\s\\S]*?<\\/${tag}>`, 'gi')
+  const blocks: string[] = []
+  let m: RegExpExecArray | null
+  while ((m = re.exec(xml)) !== null) blocks.push(m[0])
+  return blocks
+}
 
+/** Map a raw XML block to a MediumPost. */
+function parseBlock(block: string): MediumPost {
   return {
-    title: extractText(item.title as XmlField),
-    pubDate: (item.pubDate as string) ?? (item.published as string) ?? '',
-    link: normalizeLink(item.link as XmlField),
-    categories,
+    title: tagText(block, 'title'),
+    pubDate:
+      tagText(block, 'pubDate') ||
+      tagText(block, 'published') ||
+      tagText(block, 'updated'),
+    link: resolveLink(block),
+    categories: allTagText(block, 'category'),
   }
 }
 
-// ─── API ──────────────────────────────────────────────────────────────────────
+/** Parse an RSS 2.0 or Atom feed string and return posts. */
+function parseRSS(xml: string): MediumPost[] {
+  const isAtom = /<feed\b/i.test(xml)
+  return extractBlocks(xml, isAtom ? 'entry' : 'item').map(parseBlock)
+}
 
 export async function getBlogs(): Promise<MediumPost[]> {
+  if (!MEDIUM_USERNAME) {
+    return []
+  }
+
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS)
+
   try {
-    const res = await fetch(MEDIUM_FEED_URL, { next: { revalidate: 3600 } })
+    const res = await fetch(MEDIUM_FEED_URL, {
+      signal: controller.signal,
+      next: { revalidate: 3600 },
+    })
 
     if (!res.ok) {
       console.error(`Medium RSS fetch failed: ${res.status}`)
       return []
     }
 
-    const parsed = parser.parse(await res.text())
-    const rawItems: unknown =
-      parsed?.rss?.channel?.item ?? parsed?.feed?.entry ?? []
-
-    const items: RawItem[] = Array.isArray(rawItems)
-      ? rawItems
-      : rawItems
-        ? [rawItems as RawItem]
-        : []
-
-    return items.slice(0, MAX_POSTS).map(parseItem)
+    return parseRSS(await res.text()).slice(0, MAX_POSTS)
   } catch (error) {
-    console.error('Error fetching Medium blogs:', error)
+    if ((error as Error).name === 'AbortError') {
+      console.error('Medium request timed out')
+    } else {
+      console.error('Error fetching Medium blogs:', error)
+    }
     return []
+  } finally {
+    clearTimeout(timeout)
   }
 }

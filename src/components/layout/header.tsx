@@ -62,7 +62,8 @@ export function Header() {
         </Box>
       </motion.div>
 
-      <motion.div
+      <motion.nav
+        aria-label="Main navigation"
         initial={{ opacity: 0, y: -6 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
@@ -93,7 +94,7 @@ export function Header() {
             </Typography>
           ))}
         </Stack>
-      </motion.div>
+      </motion.nav>
     </Box>
   )
 }

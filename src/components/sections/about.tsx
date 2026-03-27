@@ -2,7 +2,7 @@ import { ABOUT_TEXT } from '@/lib/config'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 
-export function AboutSection() {
+export function About() {
   return (
     <Box component="section">
       <Typography

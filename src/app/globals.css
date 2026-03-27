@@ -4,12 +4,16 @@ body {
   padding: 0;
   margin: 0;
   scroll-behavior: smooth;
-  background: #f8f8f8;
 }
-
 
 * {
   box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 ::selection {
@@ -38,4 +42,22 @@ body {
   html {
     color-scheme: dark;
   }
+}
+
+/* Layout wrapper */
+.site-shell {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  font-family: var(--font-inter);
+}
+
+.site-shell__inner {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+  flex: 1;
+  padding: 0 20px;
 }

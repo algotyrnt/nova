@@ -1,5 +1,5 @@
 'use client'
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
@@ -7,7 +7,8 @@ import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
-import { useTheme } from '@mui/material/styles'
+import IconButton from '@mui/material/IconButton'
+import CloseIcon from '@mui/icons-material/Close'
 
 interface PrivacyProps {
   open: boolean
@@ -23,10 +24,8 @@ const dialogTitleSx = {
 
 const dialogTitleBoxSx = {
   display: 'flex',
-  alignItems: { xs: 'flex-start', sm: 'baseline' },
-  justifyContent: 'space-between',
-  flexDirection: { xs: 'column', sm: 'row' } as const,
-  gap: { xs: 0.5, sm: 2 },
+  flexDirection: 'column',
+  gap: 0.5,
 }
 
 const dialogContentSx = {
@@ -40,45 +39,40 @@ const dialogContentSx = {
   },
 }
 
+const dialogContentBoxSx = {
+  '& h2': {
+    fontSize: { xs: '1.0625rem', sm: '1.125rem' },
+    fontWeight: 600,
+    color: 'text.primary',
+  },
+  '& p': {
+    fontSize: { xs: '0.875rem', sm: '0.9rem' },
+    lineHeight: { xs: 1.6, sm: 1.7 },
+    letterSpacing: '0.005em',
+    color: 'text.secondary',
+    textAlign: { xs: 'left', sm: 'justify' },
+    hyphens: 'auto',
+  },
+  '& ul': {
+    pl: { xs: 2.5, sm: 3 },
+    '& li': {
+      fontSize: { xs: '0.875rem', sm: '0.9rem' },
+      lineHeight: { xs: 1.5, sm: 1.6 },
+      letterSpacing: '0.005em',
+      color: 'text.secondary',
+      mb: { xs: 0.75, sm: 1 },
+    },
+  },
+  '& a': {
+    color: 'text.primary',
+    textDecorationColor: 'rgba(0,0,0,0.25)',
+    textUnderlineOffset: 3,
+    fontWeight: 450,
+    '&:hover': { textDecorationColor: 'rgba(15,15,17,1)' },
+  },
+} as const
+
 export function Privacy({ open, onClose }: PrivacyProps) {
-  const theme = useTheme()
-
-  const dialogContentBoxSx = useMemo(
-    () => ({
-      '& h2': {
-        fontSize: { xs: '1.0625rem', sm: '1.125rem' },
-        fontWeight: 600,
-        color: 'text.primary',
-      },
-      '& p': {
-        fontSize: { xs: '0.875rem', sm: '0.9rem' },
-        lineHeight: { xs: 1.6, sm: 1.7 },
-        letterSpacing: '0.005em',
-        color: 'text.secondary',
-        textAlign: { xs: 'left', sm: 'justify' },
-        hyphens: 'auto',
-      },
-      '& ul': {
-        pl: { xs: 2.5, sm: 3 },
-        '& li': {
-          fontSize: { xs: '0.875rem', sm: '0.9rem' },
-          lineHeight: { xs: 1.5, sm: 1.6 },
-          letterSpacing: '0.005em',
-          color: 'text.secondary',
-          mb: { xs: 0.75, sm: 1 },
-        },
-      },
-      '& a': {
-        color: 'text.primary',
-        textDecorationColor: 'rgba(0,0,0,0.25)',
-        textUnderlineOffset: 3,
-        fontWeight: 450,
-        '&:hover': { textDecorationColor: theme.palette.text.primary },
-      },
-    }),
-    [theme],
-  )
-
   return (
     <Dialog
       open={open}
@@ -91,23 +85,48 @@ export function Privacy({ open, onClose }: PrivacyProps) {
         '& .MuiDialog-paper': {
           maxHeight: { xs: '90vh', sm: '85vh' },
           m: { xs: 2, sm: 3 },
-          width: { xs: `calc(100% - ${theme.spacing(4)})`, sm: 'auto' },
+          width: { xs: 'calc(100% - 32px)', sm: 'auto' },
           borderRadius: { xs: 2, sm: 3 },
         },
       }}
     >
       <DialogTitle sx={dialogTitleSx}>
         <Box sx={dialogTitleBoxSx}>
-          <Typography
+          <Box
             sx={{
-              fontSize: { xs: '1.25rem', sm: '1.5rem' },
-              fontWeight: 650,
-              color: 'text.primary',
-              lineHeight: 1.2,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
             }}
           >
-            Privacy Policy
-          </Typography>
+            <Typography
+              sx={{
+                fontSize: { xs: '1.25rem', sm: '1.5rem' },
+                fontWeight: 650,
+                color: 'text.primary',
+                lineHeight: 1.2,
+              }}
+            >
+              Privacy Policy
+            </Typography>
+
+            <IconButton
+              aria-label="close"
+              onClick={onClose}
+              size="small"
+              sx={{
+                color: 'text.secondary',
+                mr: -1, // gentle negative margin to align perfectly with padding
+                '&:hover': {
+                  color: 'text.primary',
+                  bgcolor: 'action.hover',
+                },
+              }}
+            >
+              <CloseIcon sx={{ fontSize: 20 }} />
+            </IconButton>
+          </Box>
 
           <Typography
             sx={{
@@ -120,7 +139,7 @@ export function Privacy({ open, onClose }: PrivacyProps) {
         </Box>
       </DialogTitle>
 
-      <DialogContent dividers sx={dialogContentSx}>
+      <DialogContent sx={dialogContentSx}>
         <Stack spacing={{ xs: 2, sm: 3 }} sx={dialogContentBoxSx}>
           <Typography component="p">
             This privacy policy describes how (&quot;we&quot;, &quot;us&quot;,
@@ -246,9 +265,6 @@ export function Privacy({ open, onClose }: PrivacyProps) {
             component="p"
             sx={{
               mt: 3,
-              pt: 2,
-              borderTop: '1px solid',
-              borderColor: 'divider',
               fontSize: '0.8125rem !important',
               color: 'text.disabled !important',
             }}

@@ -4,9 +4,9 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 import Link from '@mui/material/Link'
-import { StaggerWrapper, StaggerItem } from '@/components/ui/Stagger'
+import { StaggerWrapper, StaggerItem } from '@/components/ui/stagger'
 
-export async function BlogsSection() {
+export async function Blogs() {
   const blogs = await getBlogs()
 
   if (!blogs.length) return null

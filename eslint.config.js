@@ -1,14 +1,14 @@
-import type { Linter } from 'eslint'
 import nextCoreWebVitals from 'eslint-config-next/core-web-vitals'
 import nextTypescript from 'eslint-config-next/typescript'
 import prettier from 'eslint-plugin-prettier/recommended'
 
-const config: Linter.Config[] = [
-  ...nextCoreWebVitals,
-  ...nextTypescript,
+/** @type {import('eslint').Linter.Config[]} */
+const config = [
   {
     ignores: ['.next/', 'node_modules/'],
   },
+  ...nextCoreWebVitals,
+  ...nextTypescript,
   prettier,
 ]
 
