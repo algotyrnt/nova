@@ -3,10 +3,11 @@ import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
-import { Privacy, usePrivacyModal } from '@/components/sections/Privacy'
+import { Privacy, usePrivacyModal } from '@/components/sections/privacy'
+
+const CURRENT_YEAR = new Date().getFullYear()
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
   const { open, openModal, closeModal } = usePrivacyModal()
 
   return (
@@ -32,7 +33,7 @@ export function Footer() {
               letterSpacing: '0.02em',
             }}
           >
-            © {currentYear}{' '}
+            © {CURRENT_YEAR}{' '}
             <Link
               href="https://github.com/algotyrnt/nova"
               target="_blank"
