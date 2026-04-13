@@ -34,3 +34,12 @@ export const SOCIAL_LINKS: SocialLink[] = safeJsonParse<SocialLink[]>(
   process.env.SOCIAL_LINKS,
   [],
 )
+
+/** Shared layout constants used across section components. */
+
+/**
+ * The offset from the top of the viewport used for scroll-linked section
+ * anchors. This matches the sticky header height so that anchor navigation
+ * lands with the heading fully visible.
+ */
+export const SCROLL_MARGIN_TOP = '80px'
