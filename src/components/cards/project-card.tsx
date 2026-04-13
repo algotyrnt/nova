@@ -34,7 +34,7 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
-  const langColor = LANG_COLORS[project.language] ?? '#aaa'
+  const langColor = LANG_COLORS[project.language] ?? '#aaaaaa'
 
   return (
     <StaggerItem style={{ height: '100%' }}>
