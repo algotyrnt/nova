@@ -5,6 +5,9 @@ const safeJsonParse = <T>(value: string | undefined, fallback: T): T => {
   try {
     return JSON.parse(value) as T
   } catch {
+    console.warn(
+      `[config] Failed to parse env var value: "${value.slice(0, 80)}…"`,
+    )
     return fallback
   }
 }
