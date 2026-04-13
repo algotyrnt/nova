@@ -61,7 +61,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           },
           '&:focus-visible': {
             outline: '2px solid',
-            outlineColor: 'primary.main',
+            outlineColor: (theme) => theme.palette.primary.main,
             outlineOffset: '2px',
           },
         }}
