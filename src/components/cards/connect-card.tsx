@@ -16,7 +16,7 @@ export function ConnectCard({ link }: ConnectCardProps) {
       <Link
         href={link.link}
         target="_blank"
-        rel="noopener"
+        rel="noopener noreferrer"
         sx={{
           display: 'inline-flex',
           alignItems: 'center',
