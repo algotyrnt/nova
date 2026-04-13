@@ -18,7 +18,11 @@ export const EMAIL = process.env.EMAIL || ''
 export const WEBSITE_URL = process.env.WEBSITE_URL || 'http://localhost:3000'
 export const SITE_NAME = process.env.SITE_NAME || ''
 export const SITE_DESCRIPTION = process.env.SITE_DESCRIPTION || ''
-export const SITE_KEYWORDS = safeJsonParse('SITE_KEYWORDS', process.env.SITE_KEYWORDS, [])
+export const SITE_KEYWORDS = safeJsonParse(
+  'SITE_KEYWORDS',
+  process.env.SITE_KEYWORDS,
+  [],
+)
 
 export const ABOUT_TEXT = process.env.ABOUT_TEXT || ''
 
