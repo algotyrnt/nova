@@ -1,32 +1,11 @@
-import { GITHUB_USERNAME } from '@/lib/config'
+import { GITHUB_USERNAME, SCROLL_MARGIN_TOP } from '@/lib/config'
 import { getPinnedProjects } from '@/lib/api/github'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 import Link from '@mui/material/Link'
-import { StaggerWrapper, StaggerItem } from '@/components/ui/stagger'
-
-// Real GitHub language colors
-const LANG_COLORS: Record<string, string> = {
-  TypeScript: '#3178c6',
-  JavaScript: '#f1e05a',
-  Python: '#3572A5',
-  Go: '#00ADD8',
-  Rust: '#dea584',
-  Java: '#b07219',
-  'C++': '#f34b7d',
-  'C#': '#178600',
-  C: '#555555',
-  CSS: '#563d7c',
-  HTML: '#e34c26',
-  Shell: '#89e051',
-  Kotlin: '#A97BFF',
-  Swift: '#F05138',
-  Ruby: '#701516',
-  PHP: '#4F5D95',
-  Scala: '#c22d40',
-  Dart: '#00B4AB',
-}
+import { StaggerWrapper } from '@/components/ui/stagger'
+import { ProjectCard } from '@/components/cards/project-card'
 
 export async function Projects() {
   const projects = await getPinnedProjects()
@@ -34,13 +13,19 @@ export async function Projects() {
   if (!projects.length) return null
 
   return (
-    <Box component="section" id="projects" sx={{ scrollMarginTop: '80px' }}>
+    <Box
+      component="section"
+      id="projects"
+      sx={{ scrollMarginTop: SCROLL_MARGIN_TOP }}
+    >
       {/* Section header */}
       <Stack
-        direction="row"
-        alignItems="center"
-        justifyContent="space-between"
-        mb={4}
+        sx={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          mb: 4,
+        }}
       >
         <Typography
           variant="h2"
@@ -81,102 +66,10 @@ export async function Projects() {
         }}
       >
         {projects.map((project) => (
-          <StaggerItem
+          <ProjectCard
             key={`${project.author}-${project.name}`}
-            style={{ height: '100%' }}
-          >
-            <Link
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                height: '100%',
-                p: 2.25,
-                borderRadius: '10px',
-                textDecoration: 'none',
-                color: 'inherit',
-                border: '1px solid rgba(0,0,0,0.08)',
-                bgcolor: 'background.paper',
-                transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
-                '&:hover': {
-                  borderColor: 'rgba(0,0,0,0.14)',
-                  transform: 'translateY(-2px)',
-                  boxShadow: '0 6px 24px rgba(0,0,0,0.07)',
-                },
-              }}
-            >
-              <Stack spacing={1.5} sx={{ flex: 1 }}>
-                {/* Name + arrow */}
-                <Stack
-                  direction="row"
-                  alignItems="flex-start"
-                  justifyContent="space-between"
-                  spacing={1}
-                >
-                  <Typography
-                    component="h3"
-                    sx={{
-                      fontWeight: 500,
-                      fontSize: '0.85rem',
-                      color: 'text.primary',
-                      letterSpacing: '-0.015em',
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {project.name}
-                  </Typography>
-                </Stack>
-
-                {/* Description */}
-                <Typography
-                  sx={{
-                    fontSize: '0.78rem',
-                    color: 'text.secondary',
-                    lineHeight: 1.65,
-                    display: '-webkit-box',
-                    WebkitLineClamp: 3,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden',
-                    flex: 1,
-                  }}
-                >
-                  {project.description || 'No description provided.'}
-                </Typography>
-
-                {/* Language badge */}
-                {project.language && (
-                  <Stack
-                    direction="row"
-                    alignItems="center"
-                    spacing={0.75}
-                    sx={{ mt: 'auto', pt: 0.5 }}
-                  >
-                    <Box
-                      sx={{
-                        width: 8,
-                        height: 8,
-                        borderRadius: '50%',
-                        bgcolor: LANG_COLORS[project.language] ?? '#aaa',
-                        flexShrink: 0,
-                        boxShadow: `0 0 0 1.5px ${LANG_COLORS[project.language] ?? '#aaa'}22`,
-                      }}
-                    />
-                    <Typography
-                      sx={{
-                        fontSize: '0.72rem',
-                        color: 'text.disabled',
-                        letterSpacing: '0.01em',
-                      }}
-                    >
-                      {project.language}
-                    </Typography>
-                  </Stack>
-                )}
-              </Stack>
-            </Link>
-          </StaggerItem>
+            project={project}
+          />
         ))}
       </StaggerWrapper>
     </Box>
