@@ -5,9 +5,8 @@ import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 import { Privacy, usePrivacyModal } from '@/components/sections/privacy'
 
-const CURRENT_YEAR = new Date().getFullYear()
-
 export function Footer() {
+  const year = new Date().getFullYear()
   const { open, openModal, closeModal } = usePrivacyModal()
 
   return (
@@ -33,7 +32,7 @@ export function Footer() {
               letterSpacing: '0.02em',
             }}
           >
-            © {CURRENT_YEAR}{' '}
+            © {year}{' '}
             <Link
               href="https://github.com/algotyrnt/nova"
               target="_blank"
