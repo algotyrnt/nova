@@ -11,13 +11,13 @@ A minimal, fast, and fully customizable personal portfolio built with Next.js Ap
 
 ## Stack
 
-| Area      | Tooling                                      |
-| --------- | -------------------------------------------- |
-| Framework | [Next.js](https://nextjs.org/) 16 (App Router) |
-| Language  | TypeScript                                   |
-| UI        | [MUI](https://mui.com/) + Emotion            |
+| Area      | Tooling                                         |
+| --------- | ----------------------------------------------- |
+| Framework | [Next.js](https://nextjs.org/) 16 (App Router)  |
+| Language  | TypeScript                                      |
+| UI        | [MUI](https://mui.com/) + Emotion               |
 | Animation | [Framer Motion](https://www.framer.com/motion/) |
-| Analytics | Vercel Analytics + Speed Insights            |
+| Analytics | Vercel Analytics + Speed Insights               |
 
 ## Structure
 
@@ -25,6 +25,7 @@ A minimal, fast, and fully customizable personal portfolio built with Next.js Ap
 src/
 ├── app/                # Routes, metadata, robots, sitemap
 ├── components/
+│   ├── cards/          # Reusable card components
 │   ├── layout/         # header.tsx, footer.tsx
 │   ├── sections/       # about, work, projects, blogs, connect, privacy
 │   ├── theme/          # MUI + Emotion setup
@@ -39,7 +40,7 @@ src/
 
 ### Prerequisites
 
-- Node.js 20+
+- Node.js 22+
 - npm
 - Optional: GitHub personal access token for Projects section
 
@@ -82,21 +83,21 @@ Open `http://localhost:3000`.
 
 All content is driven by environment variables — no CMS required. See [`.env.example`](.env.example) for the full list.
 
-| Variable           | Purpose                                    |
-| ------------------ | ------------------------------------------ |
-| `AUTHOR_NAME`      | Full name used in page metadata            |
-| `TWITTER_HANDLE`   | Twitter/X username (without `@`) for SEO   |
-| `EMAIL`            | Contact email in Connect and footer        |
-| `WEBSITE_URL`      | Canonical site URL                         |
-| `SITE_NAME`        | Site title                                 |
-| `SITE_DESCRIPTION` | Meta description                           |
-| `ABOUT_TEXT`       | About section body text                    |
-| `SITE_KEYWORDS`    | JSON array of SEO keywords                 |
-| `WORK_EXPERIENCE`  | JSON array of work entries                 |
-| `SOCIAL_LINKS`     | JSON array of social links                 |
-| `GITHUB_USERNAME`  | GitHub username for pinned repos           |
-| `GITHUB_TOKEN`     | GitHub token for GraphQL API (optional)    |
-| `MEDIUM_USERNAME`  | Medium username for RSS feed               |
+| Variable           | Purpose                                  |
+| ------------------ | ---------------------------------------- |
+| `AUTHOR_NAME`      | Full name used in page metadata          |
+| `TWITTER_HANDLE`   | Twitter/X username (without `@`) for SEO |
+| `EMAIL`            | Contact email in Connect and footer      |
+| `WEBSITE_URL`      | Canonical site URL                       |
+| `SITE_NAME`        | Site title                               |
+| `SITE_DESCRIPTION` | Meta description                         |
+| `ABOUT_TEXT`       | About section body text                  |
+| `SITE_KEYWORDS`    | JSON array of SEO keywords               |
+| `WORK_EXPERIENCE`  | JSON array of work entries               |
+| `SOCIAL_LINKS`     | JSON array of social links               |
+| `GITHUB_USERNAME`  | GitHub username for pinned repos         |
+| `GITHUB_TOKEN`     | GitHub token for GraphQL API (optional)  |
+| `MEDIUM_USERNAME`  | Medium username for RSS feed             |
 
 `SITE_KEYWORDS`, `WORK_EXPERIENCE`, and `SOCIAL_LINKS` must be valid JSON. If `GITHUB_TOKEN` is unset, the Projects section is hidden automatically.
 
