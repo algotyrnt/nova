@@ -20,10 +20,12 @@ export function Footer() {
         }}
       >
         <Stack
-          direction={{ xs: 'column', sm: 'row' }}
-          alignItems="center"
-          justifyContent="space-between"
-          spacing={{ xs: 1, sm: 0 }}
+          sx={{
+            flexDirection: { xs: 'column', sm: 'row' },
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: { xs: 1, sm: 0 },
+          }}
         >
           <Typography
             sx={{
