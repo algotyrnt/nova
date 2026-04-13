@@ -87,7 +87,7 @@ const JSON_LD = JSON.stringify({
     {
       '@type': 'Person',
       '@id': `${WEBSITE_URL}/#person`,
-      name: SITE_NAME,
+      name: AUTHOR_NAME,
       url: WEBSITE_URL,
       jobTitle: 'Software Engineer',
       description: SITE_DESCRIPTION,
