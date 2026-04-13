@@ -1,4 +1,5 @@
 'use client'
+import type { ReactNode } from 'react'
 import { motion } from 'framer-motion'
 
 export function FadeIn({
@@ -6,7 +7,7 @@ export function FadeIn({
   delay = 0,
   y = 20,
 }: {
-  children: React.ReactNode
+  children: ReactNode
   delay?: number
   y?: number
 }) {
