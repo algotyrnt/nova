@@ -4,7 +4,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 import { motion } from 'framer-motion'
-import { tokens } from '@/components/theme/theme'
+import { tokens } from '@/components/theme/tokens'
 
 const NAV_LINKS = [
   { label: 'Work', href: '#work' },

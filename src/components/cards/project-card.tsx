@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 import Link from '@mui/material/Link'
 import { StaggerItem } from '@/components/ui/stagger'
-import { tokens } from '@/components/theme/theme'
+import { tokens } from '@/components/theme/tokens'
 
 /** GitHub language color palette (matches github.com dot colors). */
 const LANG_COLORS: Record<string, string> = {
