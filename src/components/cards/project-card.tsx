@@ -53,7 +53,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
           border: '1px solid',
           borderColor: 'divider',
           bgcolor: 'background.paper',
-          transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+          transition:
+            'border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
           '&:hover': {
             borderColor: tokens.border.medium,
             transform: 'translateY(-2px)',
@@ -89,6 +90,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               lineHeight: 1.65,
               display: '-webkit-box',
               WebkitLineClamp: 3,
+              lineClamp: 3,
               WebkitBoxOrient: 'vertical',
               overflow: 'hidden',
               flex: 1,
