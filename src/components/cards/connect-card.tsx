@@ -2,12 +2,10 @@
 import Link from '@mui/material/Link'
 import { StaggerItem } from '@/components/ui/stagger'
 import { tokens } from '@/components/theme/theme'
+import { SocialLink } from '@/lib/types'
 
 interface ConnectCardProps {
-  link: {
-    label: string
-    link: string
-  }
+  link: SocialLink
 }
 
 export function ConnectCard({ link }: ConnectCardProps) {
