@@ -27,7 +27,7 @@ const config = [
       'check-file/folder-naming-convention': [
         'error',
         {
-          'src/app/**/': 'NEXT_JS_APP_ROUTER_CASE',
+          'src/app/**/!(_*|\\(*\\)|@*|\\[*\\])/': 'KEBAB_CASE',
           'src/**/': 'KEBAB_CASE',
         },
       ],
