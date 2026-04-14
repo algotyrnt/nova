@@ -109,9 +109,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON_LD }}
         />
       </head>
-      <body className={inter.variable} suppressHydrationWarning>
+      <body className={inter.variable}>
         <ThemeRegistry>
-          <div className="site-shell">
+          <div className="site-shell" suppressHydrationWarning>
             <div className="site-shell__inner">
               <Header />
               {children}
