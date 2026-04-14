@@ -30,7 +30,7 @@ export function WorkCard({ job }: WorkCardProps) {
           '&:focus-visible': {
             outline: '2px solid',
             outlineColor: (theme) => theme.palette.primary.main,
-            outlineOffset: 2,
+            outlineOffset: '2px',
             textDecoration: 'none',
           },
         }}
