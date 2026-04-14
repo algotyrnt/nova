@@ -27,6 +27,12 @@ export function WorkCard({ job }: WorkCardProps) {
           '&:hover': {
             pl: 1.5,
           },
+          '&:focus-visible': {
+            outline: '2px solid',
+            outlineColor: (theme) => theme.palette.primary.main,
+            outlineOffset: 2,
+            textDecoration: 'none',
+          },
         }}
       >
         <Stack
@@ -37,7 +43,7 @@ export function WorkCard({ job }: WorkCardProps) {
             width: '100%',
           }}
         >
-          <Box>
+          <Box sx={{ minWidth: 0 }}>
             <Typography
               component="h3"
               sx={{
@@ -46,6 +52,9 @@ export function WorkCard({ job }: WorkCardProps) {
                 color: 'text.primary',
                 letterSpacing: '-0.01em',
                 mb: 0.25,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
               }}
             >
               {job.title}
@@ -54,6 +63,9 @@ export function WorkCard({ job }: WorkCardProps) {
               sx={{
                 color: 'text.secondary',
                 fontSize: '0.83rem',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
               }}
             >
               {job.company}
