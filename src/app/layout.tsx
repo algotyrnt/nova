@@ -111,7 +111,7 @@ export default function RootLayout({
       </head>
       <body className={inter.variable}>
         <ThemeRegistry>
-          <div className="site-shell" suppressHydrationWarning>
+          <div className="site-shell">
             <div className="site-shell__inner">
               <Header />
               {children}
