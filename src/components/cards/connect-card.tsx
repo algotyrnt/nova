@@ -1,8 +1,8 @@
 'use client'
+import type { SocialLink } from '@/lib/types'
 import Link from '@mui/material/Link'
 import { StaggerItem } from '@/components/ui/stagger'
 import { tokens } from '@/components/theme/tokens'
-import { SocialLink } from '@/lib/types'
 
 interface ConnectCardProps {
   link: SocialLink
