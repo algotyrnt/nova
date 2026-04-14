@@ -5,9 +5,8 @@ import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 import { Privacy, usePrivacyModal } from '@/components/sections/privacy'
 
-const CURRENT_YEAR = new Date().getFullYear()
-
 export function Footer() {
+  const year = new Date().getFullYear()
   const { open, openModal, closeModal } = usePrivacyModal()
 
   return (
@@ -21,10 +20,12 @@ export function Footer() {
         }}
       >
         <Stack
-          direction={{ xs: 'column', sm: 'row' }}
-          alignItems="center"
-          justifyContent="space-between"
-          spacing={{ xs: 1, sm: 0 }}
+          sx={{
+            flexDirection: { xs: 'column', sm: 'row' },
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: { xs: 1, sm: 0 },
+          }}
         >
           <Typography
             sx={{
@@ -33,7 +34,7 @@ export function Footer() {
               letterSpacing: '0.02em',
             }}
           >
-            © {CURRENT_YEAR}{' '}
+            © {year}{' '}
             <Link
               href="https://github.com/algotyrnt/nova"
               target="_blank"

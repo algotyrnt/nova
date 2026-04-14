@@ -264,9 +264,11 @@ export function Privacy({ open, onClose }: PrivacyProps) {
           <Typography
             component="p"
             sx={{
-              mt: 3,
-              fontSize: '0.8125rem !important',
-              color: 'text.disabled !important',
+              '&&': {
+                mt: 3,
+                fontSize: '0.8125rem',
+                color: 'text.disabled',
+              },
             }}
           >
             This website is open source. View the code at{' '}

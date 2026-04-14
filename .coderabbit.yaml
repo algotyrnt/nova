@@ -1,0 +1,19 @@
+# .coderabbit.yaml
+# Documentation: https://docs.coderabbit.ai/guides/configuration/
+
+language: "en-US"
+early_access: false
+reviews:
+  profile: "chill"  # Options: chill, assertive
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: true
+  review_status: true
+  collapse_walkthrough: false
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - "main"
+chat:
+  auto_reply: true

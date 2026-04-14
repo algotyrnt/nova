@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles'
+import { tokens } from './tokens'
 
 const theme = createTheme({
   palette: {
@@ -15,7 +16,7 @@ const theme = createTheme({
       secondary: '#5c5c6e',
       disabled: '#9898a6',
     },
-    divider: 'rgba(0,0,0,0.07)',
+    divider: tokens.border.subtle,
   },
   typography: {
     fontFamily: 'var(--font-inter), "Inter", "Helvetica", "Arial", sans-serif',
@@ -45,8 +46,8 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundImage: 'none',
-          boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
-          border: '1px solid rgba(0,0,0,0.08)',
+          boxShadow: tokens.shadow.card,
+          border: `1px solid ${tokens.border.subtle}`,
           borderRadius: 16,
         },
       },
