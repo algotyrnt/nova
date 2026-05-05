@@ -44,6 +44,26 @@ body {
   }
 }
 
+/* Header entrance – CSS-only so it renders before JS loads */
+@keyframes headerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header-fade {
+  animation: headerFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.header-fade--delayed {
+  animation: headerFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+}
+
 /* Layout wrapper */
 .site-shell {
   display: flex;

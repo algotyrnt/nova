@@ -1,5 +1,5 @@
 import { GITHUB_USERNAME, SCROLL_MARGIN_TOP } from '@/lib/config'
-import { getPinnedProjects } from '@/lib/api/github'
+import type { Repo } from '@/lib/types'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
@@ -7,9 +7,11 @@ import Link from '@mui/material/Link'
 import { StaggerWrapper } from '@/components/ui/stagger'
 import { ProjectCard } from '@/components/cards/project-card'
 
-export async function Projects() {
-  const projects = await getPinnedProjects()
+interface ProjectsProps {
+  projects: Repo[]
+}
 
+export function Projects({ projects }: ProjectsProps) {
   if (!projects.length) return null
 
   return (
