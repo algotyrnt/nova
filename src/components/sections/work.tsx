@@ -1,7 +1,6 @@
 import { WORK_EXPERIENCE, SCROLL_MARGIN_TOP } from '@/lib/config'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import Stack from '@mui/material/Stack'
 import { StaggerWrapper } from '@/components/ui/stagger'
 import { WorkCard } from '@/components/cards/work-card'
 
@@ -26,11 +25,9 @@ export function Work() {
         Work
       </Typography>
       <StaggerWrapper style={{ width: '100%' }}>
-        <Stack spacing={0}>
-          {WORK_EXPERIENCE.map((job) => (
-            <WorkCard key={job.id} job={job} />
-          ))}
-        </Stack>
+        {WORK_EXPERIENCE.map((job) => (
+          <WorkCard key={job.id} job={job} />
+        ))}
       </StaggerWrapper>
     </Box>
   )

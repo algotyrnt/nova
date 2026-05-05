@@ -1,9 +1,7 @@
-'use client'
 import Link from 'next/link'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
-import { motion } from 'framer-motion'
 import { tokens } from '@/components/theme/tokens'
 
 const NAV_LINKS = [
@@ -29,11 +27,7 @@ export function Header() {
         WebkitBackdropFilter: 'blur(20px)',
       }}
     >
-      <motion.div
-        initial={{ opacity: 0, y: -6 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      >
+      <div className="header-fade">
         <Box>
           <Typography
             component="span"
@@ -61,14 +55,9 @@ export function Header() {
             Punjitha Bandara
           </Typography>
         </Box>
-      </motion.div>
+      </div>
 
-      <motion.nav
-        aria-label="Main navigation"
-        initial={{ opacity: 0, y: -6 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-      >
+      <nav aria-label="Main navigation" className="header-fade--delayed">
         <Stack sx={{ flexDirection: 'row', gap: 0, alignItems: 'center' }}>
           {NAV_LINKS.map((item) => (
             <Typography
@@ -91,7 +80,7 @@ export function Header() {
                 },
                 '&:focus-visible': {
                   outline: '2px solid',
-                  outlineColor: (theme) => theme.palette.primary.main,
+                  outlineColor: tokens.palette.primaryMain,
                   outlineOffset: '2px',
                   color: 'text.primary',
                 },
@@ -101,7 +90,7 @@ export function Header() {
             </Typography>
           ))}
         </Stack>
-      </motion.nav>
+      </nav>
     </Box>
   )
 }

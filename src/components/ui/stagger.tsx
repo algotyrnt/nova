@@ -1,40 +1,36 @@
 'use client'
-import { motion, HTMLMotionProps } from 'framer-motion'
+import {
+  Children,
+  type CSSProperties,
+  type HTMLAttributes,
+  type ReactNode,
+} from 'react'
+import { useInView } from './use-in-view'
 
-export function StaggerWrapper({ children, ...props }: HTMLMotionProps<'div'>) {
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: '-40px' }}
-      variants={{
-        hidden: { opacity: 0 },
-        show: {
-          opacity: 1,
-          transition: { staggerChildren: 0.07 },
-        },
-      }}
-      {...props}
-    >
-      {children}
-    </motion.div>
-  )
+interface StaggerWrapperProps extends HTMLAttributes<HTMLDivElement> {
+  children: ReactNode
 }
 
-export function StaggerItem({ children, ...props }: HTMLMotionProps<'div'>) {
+export function StaggerWrapper({
+  children,
+  style,
+  ...rest
+}: StaggerWrapperProps) {
+  const { ref, visible } = useInView()
+
   return (
-    <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 12 },
-        show: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
-        },
-      }}
-      {...props}
-    >
-      {children}
-    </motion.div>
+    <div ref={ref} style={style} {...rest}>
+      {Children.toArray(children).map((child, i) => (
+        <div
+          key={(child as { key?: string | null }).key ?? i}
+          className={
+            visible ? 'stagger-item stagger-item--visible' : 'stagger-item'
+          }
+          style={{ '--stagger-index': i } as CSSProperties}
+        >
+          {child}
+        </div>
+      ))}
+    </div>
   )
 }

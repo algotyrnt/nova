@@ -1,5 +1,5 @@
 import { MEDIUM_USERNAME, SCROLL_MARGIN_TOP } from '@/lib/config'
-import { getBlogs } from '@/lib/api/medium'
+import type { MediumPost } from '@/lib/types'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
@@ -7,9 +7,11 @@ import Link from '@mui/material/Link'
 import { StaggerWrapper } from '@/components/ui/stagger'
 import { BlogCard } from '@/components/cards/blog-card'
 
-export async function Blogs() {
-  const blogs = await getBlogs()
+interface BlogsProps {
+  blogs: MediumPost[]
+}
 
+export function Blogs({ blogs }: BlogsProps) {
   if (!blogs.length) return null
 
   return (
@@ -58,11 +60,9 @@ export async function Blogs() {
       </Stack>
 
       <StaggerWrapper style={{ width: '100%' }}>
-        <Stack spacing={0}>
-          {blogs.map((post) => (
-            <BlogCard key={post.link} post={post} />
-          ))}
-        </Stack>
+        {blogs.map((post) => (
+          <BlogCard key={post.link} post={post} />
+        ))}
       </StaggerWrapper>
     </Box>
   )

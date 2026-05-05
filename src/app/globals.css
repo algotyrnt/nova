@@ -44,6 +44,79 @@ body {
   }
 }
 
+/* Header entrance – CSS-only so it renders before JS loads */
+@keyframes header-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header-fade {
+  animation: header-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.header-fade--delayed {
+  animation: header-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+}
+
+/* Section entrance – replaces framer-motion FadeIn */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--fade-y, 12px));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+}
+
+.fade-in--visible {
+  animation: fade-in-up 0.55s cubic-bezier(0.16, 1, 0.3, 1)
+    var(--fade-delay, 0s) both;
+}
+
+/* Stagger children – replaces framer-motion StaggerWrapper/StaggerItem */
+.stagger-item {
+  opacity: 0;
+}
+
+.stagger-item--visible {
+  animation: fade-in-up 0.4s cubic-bezier(0.16, 1, 0.3, 1)
+    calc(var(--stagger-index, 0) * 0.07s) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+
+  .fade-in,
+  .stagger-item,
+  .fade-in--visible,
+  .stagger-item--visible,
+  .header-fade,
+  .header-fade--delayed {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* Hide scrollbar for horizontally scrolling containers */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Layout wrapper */
 .site-shell {
   display: flex;

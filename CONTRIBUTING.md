@@ -1,6 +1,6 @@
 # Contributing
 
-This is a personal portfolio template built with Next.js, TypeScript, MUI, and Framer Motion. Contributions should keep the project fast, minimal, and easy to customize.
+This is a personal portfolio template built with Next.js, TypeScript, and MUI. Contributions should keep the project fast, minimal, and easy to customize.
 
 ## Setup
 
