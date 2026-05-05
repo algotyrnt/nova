@@ -13,7 +13,9 @@ export default async function Personal() {
 
   return (
     <Stack spacing={8} component="main" sx={{ pt: 3 }}>
-      <About />
+      <FadeIn delay={0} y={12}>
+        <About />
+      </FadeIn>
       <FadeIn delay={0.05} y={12}>
         <Work />
       </FadeIn>

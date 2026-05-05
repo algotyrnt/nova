@@ -64,6 +64,37 @@ body {
   animation: headerFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
 }
 
+/* Section entrance – replaces framer-motion FadeIn */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(var(--fade-y, 12px));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+}
+
+.fade-in--visible {
+  animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1)
+    var(--fade-delay, 0s) both;
+}
+
+/* Stagger children – replaces framer-motion StaggerWrapper/StaggerItem */
+.stagger-item {
+  opacity: 0;
+}
+
+.stagger-item--visible {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1)
+    calc(var(--stagger-index, 0) * 0.07s) both;
+}
+
 /* Layout wrapper */
 .site-shell {
   display: flex;

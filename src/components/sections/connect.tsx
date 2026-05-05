@@ -1,7 +1,6 @@
 import { EMAIL, SOCIAL_LINKS } from '@/lib/config'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import Stack from '@mui/material/Stack'
 import Link from '@mui/material/Link'
 import { StaggerWrapper } from '@/components/ui/stagger'
 import { ConnectCard } from '@/components/cards/connect-card'
@@ -46,23 +45,21 @@ export function Connect() {
         </Link>
       </Typography>
 
-      <StaggerWrapper>
-        <Stack
-          sx={{
-            flexDirection: 'row',
-            flexWrap: 'nowrap',
-            gap: 1.5,
-            alignItems: 'center',
-            overflowX: 'auto',
-            pb: 0.5,
-            scrollbarWidth: 'none',
-            '&::-webkit-scrollbar': { display: 'none' },
-          }}
-        >
-          {SOCIAL_LINKS.map((link) => (
-            <ConnectCard key={link.label} link={link} />
-          ))}
-        </Stack>
+      <StaggerWrapper
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          flexWrap: 'nowrap',
+          gap: '12px',
+          alignItems: 'center',
+          overflowX: 'auto',
+          paddingBottom: '4px',
+          scrollbarWidth: 'none',
+        }}
+      >
+        {SOCIAL_LINKS.map((link) => (
+          <ConnectCard key={link.label} link={link} />
+        ))}
       </StaggerWrapper>
     </Box>
   )

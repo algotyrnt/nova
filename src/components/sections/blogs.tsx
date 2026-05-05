@@ -60,11 +60,9 @@ export function Blogs({ blogs }: BlogsProps) {
       </Stack>
 
       <StaggerWrapper style={{ width: '100%' }}>
-        <Stack spacing={0}>
-          {blogs.map((post) => (
-            <BlogCard key={post.link} post={post} />
-          ))}
-        </Stack>
+        {blogs.map((post) => (
+          <BlogCard key={post.link} post={post} />
+        ))}
       </StaggerWrapper>
     </Box>
   )
