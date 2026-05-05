@@ -45,7 +45,7 @@ body {
 }
 
 /* Header entrance – CSS-only so it renders before JS loads */
-@keyframes headerFadeIn {
+@keyframes header-fade-in {
   from {
     opacity: 0;
     transform: translateY(-6px);
@@ -57,11 +57,11 @@ body {
 }
 
 .header-fade {
-  animation: headerFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: header-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .header-fade--delayed {
-  animation: headerFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+  animation: header-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
 }
 
 /* Section entrance – replaces framer-motion FadeIn */
@@ -99,7 +99,9 @@ body {
   .fade-in,
   .stagger-item,
   .fade-in--visible,
-  .stagger-item--visible {
+  .stagger-item--visible,
+  .header-fade,
+  .header-fade--delayed {
     animation: none;
     opacity: 1;
   }
