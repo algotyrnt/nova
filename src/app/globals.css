@@ -96,6 +96,11 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+
   .fade-in,
   .stagger-item,
   .fade-in--visible,
