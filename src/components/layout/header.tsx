@@ -80,7 +80,7 @@ export function Header() {
                 },
                 '&:focus-visible': {
                   outline: '2px solid',
-                  outlineColor: 'primary.main',
+                  outlineColor: tokens.palette.primaryMain,
                   outlineOffset: '2px',
                   color: 'text.primary',
                 },

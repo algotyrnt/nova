@@ -6,6 +6,9 @@
  * Keep all raw color/shadow values here so a single edit propagates everywhere.
  */
 export const tokens = {
+  palette: {
+    primaryMain: '#09090b',
+  },
   shadow: {
     card: '0 2px 12px rgba(0,0,0,0.06)',
     cardHover: '0 6px 24px rgba(0,0,0,0.07)',

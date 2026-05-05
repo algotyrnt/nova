@@ -3,6 +3,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 import Link from '@mui/material/Link'
+import { tokens } from '@/components/theme/tokens'
 
 interface WorkCardProps {
   job: WorkExperience
@@ -26,7 +27,7 @@ export function WorkCard({ job }: WorkCardProps) {
         },
         '&:focus-visible': {
           outline: '2px solid',
-          outlineColor: 'primary.main',
+          outlineColor: tokens.palette.primaryMain,
           outlineOffset: '2px',
           textDecoration: 'none',
         },
