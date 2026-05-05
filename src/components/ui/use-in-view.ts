@@ -7,16 +7,16 @@ import { useEffect, useRef, useState } from 'react'
  */
 export function useInView(margin = '-40px') {
   const ref = useRef<HTMLDivElement>(null)
-  const [visible, setVisible] = useState(
-    typeof window === 'undefined' || !('IntersectionObserver' in window),
-  )
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window))
-      return
-
     const el = ref.current
     if (!el) return
+
+    if (!('IntersectionObserver' in window)) {
+      queueMicrotask(() => setVisible(true))
+      return
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {

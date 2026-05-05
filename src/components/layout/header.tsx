@@ -79,8 +79,7 @@ export function Header() {
                   bgcolor: 'rgba(0,0,0,0.04)',
                 },
                 '&:focus-visible': {
-                  outline: '2px solid',
-                  outlineColor: 'primary.main',
+                  outline: (theme) => `2px solid ${theme.palette.primary.main}`,
                   outlineOffset: '2px',
                   color: 'text.primary',
                 },

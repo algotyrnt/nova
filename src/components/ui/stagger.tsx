@@ -20,9 +20,9 @@ export function StaggerWrapper({
 
   return (
     <div ref={ref} style={style} {...rest}>
-      {Children.map(children, (child, i) => (
+      {Children.toArray(children).map((child, i) => (
         <div
-          key={i}
+          key={(child as { key?: string | null }).key ?? i}
           className={
             visible ? 'stagger-item stagger-item--visible' : 'stagger-item'
           }
