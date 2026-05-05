@@ -26,8 +26,7 @@ export function WorkCard({ job }: WorkCardProps) {
         },
         '&:focus-visible': {
           outline: '2px solid',
-          outlineColor: (theme: { palette: { primary: { main: string } } }) =>
-            theme.palette.primary.main,
+          outlineColor: 'primary.main',
           outlineOffset: '2px',
           textDecoration: 'none',
         },
