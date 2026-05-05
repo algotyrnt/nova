@@ -1,5 +1,5 @@
 'use client'
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import { useInView } from './use-in-view'
 
 export function FadeIn({
@@ -22,7 +22,7 @@ export function FadeIn({
           '--fade-y': `${y}px`,
           '--fade-delay': `${delay}s`,
           width: '100%',
-        } as React.CSSProperties
+        } as CSSProperties
       }
     >
       {children}

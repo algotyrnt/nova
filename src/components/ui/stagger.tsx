@@ -1,8 +1,13 @@
 'use client'
-import { Children, type ReactNode } from 'react'
+import {
+  Children,
+  type CSSProperties,
+  type HTMLAttributes,
+  type ReactNode,
+} from 'react'
 import { useInView } from './use-in-view'
 
-interface StaggerWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
+interface StaggerWrapperProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode
 }
 
@@ -17,10 +22,11 @@ export function StaggerWrapper({
     <div ref={ref} style={style} {...rest}>
       {Children.map(children, (child, i) => (
         <div
+          key={i}
           className={
             visible ? 'stagger-item stagger-item--visible' : 'stagger-item'
           }
-          style={{ '--stagger-index': i } as React.CSSProperties}
+          style={{ '--stagger-index': i } as CSSProperties}
         >
           {child}
         </div>
