@@ -16,7 +16,7 @@ A minimal, fast, and fully customizable personal portfolio built with Next.js Ap
 | Framework | [Next.js](https://nextjs.org/) 16 (App Router)  |
 | Language  | TypeScript                                      |
 | UI        | [MUI](https://mui.com/) + Emotion               |
-| Animation | [Framer Motion](https://www.framer.com/motion/) |
+| Animation | CSS animations + IntersectionObserver           |
 | Analytics | Vercel Analytics + Speed Insights               |
 
 ## Structure
