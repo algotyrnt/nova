@@ -6,7 +6,11 @@ interface StaggerWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactNode
 }
 
-export function StaggerWrapper({ children, style, ...rest }: StaggerWrapperProps) {
+export function StaggerWrapper({
+  children,
+  style,
+  ...rest
+}: StaggerWrapperProps) {
   const { ref, visible } = useInView()
 
   return (
