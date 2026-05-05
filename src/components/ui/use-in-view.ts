@@ -7,9 +7,13 @@ import { useEffect, useRef, useState } from 'react'
  */
 export function useInView(margin = '-40px') {
   const ref = useRef<HTMLDivElement>(null)
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(
+    typeof window === 'undefined' || !('IntersectionObserver' in window)
+  )
 
   useEffect(() => {
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return
+
     const el = ref.current
     if (!el) return
 

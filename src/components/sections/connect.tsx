@@ -45,8 +45,8 @@ export function Connect() {
         </Link>
       </Typography>
 
-      <Box
-        sx={{
+      <StaggerWrapper
+        style={{
           display: 'flex',
           flexDirection: 'row',
           flexWrap: 'nowrap',
@@ -55,15 +55,13 @@ export function Connect() {
           overflowX: 'auto',
           paddingBottom: '4px',
           scrollbarWidth: 'none',
-          '&::-webkit-scrollbar': { display: 'none' },
         }}
+        className="hide-scrollbar"
       >
-        <StaggerWrapper style={{ display: 'contents' }}>
-          {SOCIAL_LINKS.map((link) => (
-            <ConnectCard key={link.label} link={link} />
-          ))}
-        </StaggerWrapper>
-      </Box>
+        {SOCIAL_LINKS.map((link) => (
+          <ConnectCard key={link.label} link={link} />
+        ))}
+      </StaggerWrapper>
     </Box>
   )
 }

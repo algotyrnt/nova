@@ -9,7 +9,9 @@ import Stack from '@mui/material/Stack'
 import { FadeIn } from '@/components/ui/fade-in'
 
 export default async function Personal() {
-  const [projects, blogs] = await Promise.all([getPinnedProjects(), getBlogs()])
+  const results = await Promise.allSettled([getPinnedProjects(), getBlogs()])
+  const projects = results[0].status === 'fulfilled' ? results[0].value : []
+  const blogs = results[1].status === 'fulfilled' ? results[1].value : []
 
   return (
     <Stack spacing={8} component="main" sx={{ pt: 3 }}>

@@ -65,7 +65,7 @@ body {
 }
 
 /* Section entrance – replaces framer-motion FadeIn */
-@keyframes fadeInUp {
+@keyframes fade-in-up {
   from {
     opacity: 0;
     transform: translateY(var(--fade-y, 12px));
@@ -81,7 +81,7 @@ body {
 }
 
 .fade-in--visible {
-  animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1)
+  animation: fade-in-up 0.55s cubic-bezier(0.16, 1, 0.3, 1)
     var(--fade-delay, 0s) both;
 }
 
@@ -91,7 +91,7 @@ body {
 }
 
 .stagger-item--visible {
-  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1)
+  animation: fade-in-up 0.4s cubic-bezier(0.16, 1, 0.3, 1)
     calc(var(--stagger-index, 0) * 0.07s) both;
 }
 
@@ -103,6 +103,11 @@ body {
     animation: none;
     opacity: 1;
   }
+}
+
+/* Hide scrollbar for horizontally scrolling containers */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 /* Layout wrapper */
