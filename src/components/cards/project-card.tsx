@@ -58,7 +58,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
           boxShadow: tokens.shadow.cardHover,
         },
         '&:focus-visible': {
-          outline: (theme) => `2px solid ${theme.palette.primary.main}`,
+          outline: '2px solid',
+          outlineColor: 'primary.main',
           outlineOffset: '2px',
         },
       }}
