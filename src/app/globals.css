@@ -95,6 +95,16 @@ body {
     calc(var(--stagger-index, 0) * 0.07s) both;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .stagger-item,
+  .fade-in--visible,
+  .stagger-item--visible {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 /* Layout wrapper */
 .site-shell {
   display: flex;

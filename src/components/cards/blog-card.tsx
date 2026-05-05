@@ -56,7 +56,7 @@ export function BlogCard({ post }: BlogCardProps) {
             {post.title}
           </Typography>
 
-          {!!post.categories.length && (
+          {!!post.categories?.length && (
             <Stack
               sx={{
                 flexDirection: 'row',
@@ -75,7 +75,7 @@ export function BlogCard({ post }: BlogCardProps) {
                   }}
                 >
                   {cat}
-                  {i < Math.min(post.categories.length, 3) - 1 && (
+                  {i < Math.min(post.categories!.length, 3) - 1 && (
                     <Box component="span" sx={{ mx: 0.5, opacity: 0.4 }}>
                       ·
                     </Box>
