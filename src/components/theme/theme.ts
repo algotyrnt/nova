@@ -1,4 +1,5 @@
 import { createTheme, PaletteMode } from '@mui/material/styles'
+import { tokens } from './tokens'
 
 export const getTheme = (mode: PaletteMode) => {
   const isLight = mode === 'light'
@@ -7,7 +8,7 @@ export const getTheme = (mode: PaletteMode) => {
     palette: {
       mode,
       primary: {
-        main: isLight ? '#09090b' : '#ffffff',
+        main: tokens.palette.primaryMainHex,
       },
       background: {
         default: isLight ? '#fcfcfc' : '#09090b',
@@ -18,7 +19,7 @@ export const getTheme = (mode: PaletteMode) => {
         secondary: isLight ? '#5c5c6e' : '#a1a1aa',
         disabled: isLight ? '#9898a6' : '#52525b',
       },
-      divider: isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255, 255, 255, 0.08)',
+      divider: tokens.border.subtle,
     },
     typography: {
       fontFamily:
@@ -49,10 +50,8 @@ export const getTheme = (mode: PaletteMode) => {
         styleOverrides: {
           root: {
             backgroundImage: 'none',
-            boxShadow: isLight ? '0 2px 12px rgba(0,0,0,0.06)' : 'none',
-            border: `1px solid ${
-              isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255, 255, 255, 0.08)'
-            }`,
+            boxShadow: tokens.shadow.card,
+            border: `1px solid ${tokens.border.subtle}`,
             borderRadius: 16,
           },
         },

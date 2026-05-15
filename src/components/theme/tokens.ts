@@ -7,6 +7,7 @@
  */
 export const tokens = {
   palette: {
+    primaryMainHex: '#6366f1',
     primaryMain: 'var(--palette-primary)',
   },
   shadow: {

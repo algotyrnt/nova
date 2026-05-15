@@ -8,15 +8,19 @@ import { tokens } from './tokens'
 
 export function ThemeToggle() {
   const { setTheme, resolvedTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
 
-  const isDark = resolvedTheme === 'dark'
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isDark = mounted && resolvedTheme === 'dark'
 
   return (
     <IconButton
       size="small"
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       aria-label="Toggle theme"
-      suppressHydrationWarning
       sx={{
         color: 'text.disabled',
         p: 0.75,
@@ -26,7 +30,7 @@ export function ThemeToggle() {
         transition: 'all 0.15s ease',
         '&:hover': {
           color: 'text.primary',
-          bgcolor: 'rgba(0,0,0,0.04)',
+          bgcolor: 'action.hover',
           borderColor: tokens.border.medium,
         },
         '& svg': {

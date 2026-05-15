@@ -11,7 +11,7 @@
   --scrollbar-thumb-hover: rgba(0, 0, 0, 0.2);
 }
 
-[class~='dark'] {
+.dark {
   --palette-primary: #ffffff;
   --shadow-card: none;
   --shadow-card-hover: none;
@@ -43,7 +43,7 @@ body {
   background-color: #fcfcfc;
 }
 
-[class~='dark'] body {
+.dark body {
   background-color: #09090b;
 }
 
