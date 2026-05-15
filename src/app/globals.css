@@ -1,3 +1,29 @@
+:root {
+  --palette-primary: #09090b;
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 6px 24px rgba(0, 0, 0, 0.07);
+  --shadow-social-hover: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-medium: rgba(0, 0, 0, 0.14);
+  --backdrop-header: rgba(252, 252, 252, 0.85);
+  --selection-bg: rgba(9, 9, 11, 0.08);
+  --scrollbar-thumb: rgba(0, 0, 0, 0.12);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.2);
+}
+
+[class~='dark'] {
+  --palette-primary: #ffffff;
+  --shadow-card: none;
+  --shadow-card-hover: none;
+  --shadow-social-hover: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --backdrop-header: rgba(9, 9, 11, 0.85);
+  --selection-bg: rgba(255, 255, 255, 0.08);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.12);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.2);
+}
+
 /* Minimal CSS for Next.js and MUI */
 html,
 body {
@@ -14,10 +40,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  background-color: #fcfcfc;
+}
+
+[class~='dark'] body {
+  background-color: #09090b;
 }
 
 ::selection {
-  background: rgba(9, 9, 11, 0.08);
+  background: var(--selection-bg);
 }
 
 /* Thin scrollbar */
@@ -30,12 +61,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.12);
+  background: var(--scrollbar-thumb);
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--scrollbar-thumb-hover);
 }
 
 @media (prefers-color-scheme: dark) {

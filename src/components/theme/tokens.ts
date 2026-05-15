@@ -7,18 +7,18 @@
  */
 export const tokens = {
   palette: {
-    primaryMain: '#09090b',
+    primaryMain: 'var(--palette-primary)',
   },
   shadow: {
-    card: '0 2px 12px rgba(0,0,0,0.06)',
-    cardHover: '0 6px 24px rgba(0,0,0,0.07)',
-    socialHover: '0 2px 8px rgba(0,0,0,0.06)',
+    card: 'var(--shadow-card)',
+    cardHover: 'var(--shadow-card-hover)',
+    socialHover: 'var(--shadow-social-hover)',
   },
   border: {
-    subtle: 'rgba(0,0,0,0.08)',
-    medium: 'rgba(0,0,0,0.14)',
+    subtle: 'var(--border-subtle)',
+    medium: 'var(--border-medium)',
   },
   backdrop: {
-    header: 'rgba(248, 248, 248, 0.85)',
+    header: 'var(--backdrop-header)',
   },
 } as const

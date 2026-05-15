@@ -3,6 +3,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 import { tokens } from '@/components/theme/tokens'
+import { ThemeToggle } from '@/components/theme/theme-toggle'
 
 const NAV_LINKS = [
   { label: 'Work', href: '#work' },
@@ -58,7 +59,7 @@ export function Header() {
       </div>
 
       <nav aria-label="Main navigation" className="header-fade--delayed">
-        <Stack sx={{ flexDirection: 'row', gap: 0, alignItems: 'center' }}>
+        <Stack sx={{ flexDirection: 'row', gap: 1, alignItems: 'center' }}>
           {NAV_LINKS.map((item) => (
             <Typography
               key={item.label}
@@ -89,6 +90,16 @@ export function Header() {
               {item.label}
             </Typography>
           ))}
+          <Box
+            sx={{
+              ml: 0.5,
+              pl: 1,
+              borderLeft: '1px solid',
+              borderColor: tokens.border.subtle,
+            }}
+          >
+            <ThemeToggle />
+          </Box>
         </Stack>
       </nav>
     </Box>
