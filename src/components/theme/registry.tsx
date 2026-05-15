@@ -8,11 +8,20 @@ import { getTheme } from './theme'
 
 function MuiThemeWrapper({ children }: { children: React.ReactNode }) {
   const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const currentTheme = React.useMemo(() => {
     const mode = (resolvedTheme ?? 'light') as 'light' | 'dark'
     return getTheme(mode)
   }, [resolvedTheme])
+
+  if (!mounted) {
+    return null
+  }
 
   return (
     <MuiThemeProvider theme={currentTheme}>
@@ -29,7 +38,7 @@ export default function ThemeRegistry({
 }) {
   return (
     <NextAppDirEmotionCacheProvider options={{ key: 'mui' }}>
-      <NextThemesProvider attribute="class" defaultTheme="system" enableSystem>
+      <NextThemesProvider attribute="class" defaultTheme="light" enableSystem>
         <MuiThemeWrapper>{children}</MuiThemeWrapper>
       </NextThemesProvider>
     </NextAppDirEmotionCacheProvider>

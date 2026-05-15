@@ -20,7 +20,8 @@ export function ThemeToggle() {
     <IconButton
       size="small"
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      aria-label="Toggle theme"
+      aria-pressed={isDark}
+      aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
       sx={{
         color: 'text.disabled',
         p: 0.75,

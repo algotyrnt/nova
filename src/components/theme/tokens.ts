@@ -3,7 +3,9 @@
  * sx props / globals where direct theme access isn't available (e.g. in CSS
  * strings that must be resolved at build time).
  *
- * Keep all raw color/shadow values here so a single edit propagates everywhere.
+ * Note: Most values are now defined as CSS variables in globals.css. This file
+ * acts as a bridge, mapping those CSS variables to JS tokens for use in components
+ * and theme definitions.
  */
 export const tokens = {
   palette: {
