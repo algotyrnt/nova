@@ -7,27 +7,12 @@ import NextAppDirEmotionCacheProvider from './emotion-cache'
 import { getTheme } from './theme'
 
 function MuiThemeWrapper({ children }: { children: React.ReactNode }) {
-  const { theme, resolvedTheme } = useTheme()
-  const [mounted, setMounted] = React.useState(false)
-
-  // Avoid hydration mismatch
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
+  const { resolvedTheme } = useTheme()
 
   const currentTheme = React.useMemo(() => {
-    const mode = (resolvedTheme || theme || 'light') as 'light' | 'dark'
+    const mode = (resolvedTheme ?? 'light') as 'light' | 'dark'
     return getTheme(mode)
-  }, [theme, resolvedTheme])
-
-  if (!mounted) {
-    return (
-      <MuiThemeProvider theme={getTheme('light')}>
-        <CssBaseline />
-        {children}
-      </MuiThemeProvider>
-    )
-  }
+  }, [resolvedTheme])
 
   return (
     <MuiThemeProvider theme={currentTheme}>

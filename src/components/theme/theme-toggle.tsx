@@ -8,29 +8,6 @@ import { tokens } from './tokens'
 
 export function ThemeToggle() {
   const { setTheme, resolvedTheme } = useTheme()
-  const [mounted, setMounted] = React.useState(false)
-
-  // Avoid hydration mismatch
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) {
-    return (
-      <IconButton
-        size="small"
-        sx={{
-          color: 'text.disabled',
-          p: 0.75,
-          borderRadius: '8px',
-          border: '1px solid',
-          borderColor: 'transparent',
-        }}
-      >
-        <div style={{ width: 18, height: 18 }} />
-      </IconButton>
-    )
-  }
 
   const isDark = resolvedTheme === 'dark'
 
@@ -39,6 +16,7 @@ export function ThemeToggle() {
       size="small"
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       aria-label="Toggle theme"
+      suppressHydrationWarning
       sx={{
         color: 'text.disabled',
         p: 0.75,
