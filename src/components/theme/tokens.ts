@@ -3,22 +3,25 @@
  * sx props / globals where direct theme access isn't available (e.g. in CSS
  * strings that must be resolved at build time).
  *
- * Keep all raw color/shadow values here so a single edit propagates everywhere.
+ * Note: Most values are now defined as CSS variables in globals.css. This file
+ * acts as a bridge, mapping those CSS variables to JS tokens for use in components
+ * and theme definitions.
  */
 export const tokens = {
   palette: {
-    primaryMain: '#09090b',
+    primaryMainHex: '#6366f1',
+    primaryMain: 'var(--palette-primary)',
   },
   shadow: {
-    card: '0 2px 12px rgba(0,0,0,0.06)',
-    cardHover: '0 6px 24px rgba(0,0,0,0.07)',
-    socialHover: '0 2px 8px rgba(0,0,0,0.06)',
+    card: 'var(--shadow-card)',
+    cardHover: 'var(--shadow-card-hover)',
+    socialHover: 'var(--shadow-social-hover)',
   },
   border: {
-    subtle: 'rgba(0,0,0,0.08)',
-    medium: 'rgba(0,0,0,0.14)',
+    subtle: 'var(--border-subtle)',
+    medium: 'var(--border-medium)',
   },
   backdrop: {
-    header: 'rgba(248, 248, 248, 0.85)',
+    header: 'var(--backdrop-header)',
   },
 } as const
