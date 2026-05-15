@@ -59,7 +59,7 @@ export function Header() {
       </div>
 
       <nav aria-label="Main navigation" className="header-fade--delayed">
-        <Stack sx={{ flexDirection: 'row', gap: 1, alignItems: 'center' }}>
+        <Stack sx={{ flexDirection: 'row', gap: 0.25, alignItems: 'center' }}>
           {NAV_LINKS.map((item) => (
             <Typography
               key={item.label}
@@ -92,8 +92,7 @@ export function Header() {
           ))}
           <Box
             sx={{
-              ml: 0.5,
-              pl: 1,
+              pl: 1.5,
               borderLeft: '1px solid',
               borderColor: tokens.border.subtle,
             }}
