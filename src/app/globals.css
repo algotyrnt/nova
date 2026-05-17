@@ -89,12 +89,10 @@ body {
 
 .header-fade {
   animation: header-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
-  will-change: transform, opacity;
 }
 
 .header-fade--delayed {
   animation: header-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
-  will-change: transform, opacity;
 }
 
 /* Section entrance */
@@ -111,7 +109,6 @@ body {
 
 .fade-in {
   opacity: 0;
-  will-change: transform, opacity;
 }
 
 .fade-in--visible {
@@ -122,7 +119,6 @@ body {
 /* Stagger children */
 .stagger-item {
   opacity: 0;
-  will-change: transform, opacity;
 }
 
 .stagger-item--visible {
@@ -144,7 +140,6 @@ body {
   .header-fade--delayed {
     animation: none;
     opacity: 1;
-    will-change: auto;
   }
 }
 

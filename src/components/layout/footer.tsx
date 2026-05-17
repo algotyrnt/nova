@@ -4,7 +4,7 @@ import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
-import { usePrivacyModal } from '@/components/sections/privacy'
+import { usePrivacyModal } from '@/components/sections/use-privacy-modal'
 
 const Privacy = lazy(() =>
   import('@/components/sections/privacy').then((m) => ({ default: m.Privacy })),
