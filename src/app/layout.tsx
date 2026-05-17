@@ -27,8 +27,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: SITE_NAME,
-    template: '%s | ' + SITE_NAME,
+    default: `${SITE_NAME} - ${AUTHOR_NAME}`,
+    template: '%s - ' + SITE_NAME,
   },
   description: SITE_DESCRIPTION,
   metadataBase: new URL(WEBSITE_URL),
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: SITE_NAME,
+    title: `${SITE_NAME} - ${AUTHOR_NAME}`,
     description: SITE_DESCRIPTION,
     url: '/',
     siteName: SITE_NAME,
@@ -52,14 +52,14 @@ export const metadata: Metadata = {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: SITE_NAME,
+        alt: `${SITE_NAME} - ${AUTHOR_NAME}`,
       },
     ],
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: SITE_NAME,
+    title: `${SITE_NAME} - ${AUTHOR_NAME}`,
     description: SITE_DESCRIPTION,
     site: TWITTER_HANDLE ? `@${TWITTER_HANDLE}` : undefined,
     creator: TWITTER_HANDLE ? `@${TWITTER_HANDLE}` : undefined,
