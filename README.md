@@ -89,7 +89,7 @@ All content is driven by environment variables — no CMS required. See [`.env.e
 | `TWITTER_HANDLE`   | Twitter/X username (without `@`) for SEO |
 | `EMAIL`            | Contact email in Connect and footer      |
 | `WEBSITE_URL`      | Canonical site URL                       |
-| `SITE_NAME`        | Site title                               |
+| `SITE_NAME`        | Base site name (e.g. brand or domain)    |
 | `SITE_DESCRIPTION` | Meta description                         |
 | `ABOUT_TEXT`       | About section body text                  |
 | `SITE_KEYWORDS`    | JSON array of SEO keywords               |

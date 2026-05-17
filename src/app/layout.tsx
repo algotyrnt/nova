@@ -27,7 +27,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: SITE_NAME,
+    default: `${SITE_NAME} - ${AUTHOR_NAME}`,
     template: '%s | ' + SITE_NAME,
   },
   description: SITE_DESCRIPTION,
@@ -42,24 +42,24 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: SITE_NAME,
+    title: `${SITE_NAME} - ${AUTHOR_NAME}`,
     description: SITE_DESCRIPTION,
     url: '/',
-    siteName: SITE_NAME,
+    siteName: AUTHOR_NAME,
     type: 'website',
     images: [
       {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: SITE_NAME,
+        alt: `${SITE_NAME} - ${AUTHOR_NAME}`,
       },
     ],
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: SITE_NAME,
+    title: `${SITE_NAME} - ${AUTHOR_NAME}`,
     description: SITE_DESCRIPTION,
     site: TWITTER_HANDLE ? `@${TWITTER_HANDLE}` : undefined,
     creator: TWITTER_HANDLE ? `@${TWITTER_HANDLE}` : undefined,
@@ -83,7 +83,7 @@ const JSON_LD = JSON.stringify({
     {
       '@type': 'WebSite',
       '@id': `${WEBSITE_URL}/#website`,
-      name: SITE_NAME,
+      name: AUTHOR_NAME,
       url: WEBSITE_URL,
       description: SITE_DESCRIPTION,
     },
