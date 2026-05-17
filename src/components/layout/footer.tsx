@@ -109,7 +109,7 @@ export function Footer() {
       </Box>
 
       {open && (
-        <Suspense>
+        <Suspense fallback={null}>
           <Privacy open={open} onClose={closeModal} />
         </Suspense>
       )}

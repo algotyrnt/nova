@@ -89,13 +89,15 @@ body {
 
 .header-fade {
   animation: header-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
 }
 
 .header-fade--delayed {
   animation: header-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+  will-change: transform, opacity;
 }
 
-/* Section entrance – replaces framer-motion FadeIn */
+/* Section entrance */
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -117,7 +119,7 @@ body {
     var(--fade-delay, 0s) both;
 }
 
-/* Stagger children – replaces framer-motion StaggerWrapper/StaggerItem */
+/* Stagger children */
 .stagger-item {
   opacity: 0;
   will-change: transform, opacity;
