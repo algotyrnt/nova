@@ -1,5 +1,3 @@
-'use client'
-import { useState } from 'react'
 import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
@@ -56,6 +54,8 @@ const dialogContentBoxSx = {
   '& ul': {
     pl: { xs: 2.5, sm: 3 },
     '& li': {
+      fontFamily:
+        'var(--font-inter), "Inter", "Helvetica", "Arial", sans-serif',
       fontSize: { xs: '0.875rem', sm: '0.9rem' },
       lineHeight: { xs: 1.5, sm: 1.6 },
       letterSpacing: '0.005em',
@@ -285,13 +285,4 @@ export function Privacy({ open, onClose }: PrivacyProps) {
       </DialogContent>
     </Dialog>
   )
-}
-
-export function usePrivacyModal() {
-  const [open, setOpen] = useState(false)
-
-  const openModal = () => setOpen(true)
-  const closeModal = () => setOpen(false)
-
-  return { open, openModal, closeModal }
 }

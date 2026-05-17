@@ -43,6 +43,7 @@ src/
 - Node.js 22+
 - npm
 - Optional: GitHub personal access token for Projects section
+- Modern browser with `IntersectionObserver` support (Chrome 51+, Firefox 55+, Safari 12.1+, Edge 15+, and modern mobile browsers like iOS Safari 12.2+, Chrome for Android 51+) for animations
 
 ### 1. Clone
 

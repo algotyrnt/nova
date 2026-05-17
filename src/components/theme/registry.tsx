@@ -1,10 +1,9 @@
 'use client'
 import * as React from 'react'
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles'
-import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider as NextThemesProvider, useTheme } from 'next-themes'
 import NextAppDirEmotionCacheProvider from './emotion-cache'
-import { getTheme } from './theme'
+import { lightTheme, darkTheme } from './theme'
 
 function MuiThemeWrapper({ children }: { children: React.ReactNode }) {
   const { resolvedTheme } = useTheme()
@@ -14,21 +13,9 @@ function MuiThemeWrapper({ children }: { children: React.ReactNode }) {
     setMounted(true)
   }, [])
 
-  const currentTheme = React.useMemo(() => {
-    const mode = (resolvedTheme ?? 'light') as 'light' | 'dark'
-    return getTheme(mode)
-  }, [resolvedTheme])
+  const theme = mounted && resolvedTheme === 'dark' ? darkTheme : lightTheme
 
-  if (!mounted) {
-    return null
-  }
-
-  return (
-    <MuiThemeProvider theme={currentTheme}>
-      <CssBaseline />
-      {children}
-    </MuiThemeProvider>
-  )
+  return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
 }
 
 export default function ThemeRegistry({

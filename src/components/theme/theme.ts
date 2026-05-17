@@ -1,7 +1,7 @@
 import { createTheme, PaletteMode } from '@mui/material/styles'
 import { tokens } from './tokens'
 
-export const getTheme = (mode: PaletteMode) => {
+const buildTheme = (mode: PaletteMode) => {
   const isLight = mode === 'light'
 
   return createTheme({
@@ -62,3 +62,6 @@ export const getTheme = (mode: PaletteMode) => {
     },
   })
 }
+
+export const lightTheme = buildTheme('light')
+export const darkTheme = buildTheme('dark')

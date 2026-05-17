@@ -1,9 +1,14 @@
 'use client'
+import { lazy, Suspense } from 'react'
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
-import { Privacy, usePrivacyModal } from '@/components/sections/privacy'
+import { usePrivacyModal } from '@/components/sections/use-privacy-modal'
+
+const Privacy = lazy(() =>
+  import('@/components/sections/privacy').then((m) => ({ default: m.Privacy })),
+)
 
 export function Footer() {
   const year = new Date().getFullYear()
@@ -103,7 +108,11 @@ export function Footer() {
         </Stack>
       </Box>
 
-      <Privacy open={open} onClose={closeModal} />
+      {open && (
+        <Suspense fallback={null}>
+          <Privacy open={open} onClose={closeModal} />
+        </Suspense>
+      )}
     </>
   )
 }
