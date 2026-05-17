@@ -56,6 +56,8 @@ const dialogContentBoxSx = {
   '& ul': {
     pl: { xs: 2.5, sm: 3 },
     '& li': {
+      fontFamily:
+        'var(--font-inter), "Inter", "Helvetica", "Arial", sans-serif',
       fontSize: { xs: '0.875rem', sm: '0.9rem' },
       lineHeight: { xs: 1.5, sm: 1.6 },
       letterSpacing: '0.005em',

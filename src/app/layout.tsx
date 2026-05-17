@@ -107,6 +107,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="dns-prefetch" href="https://api.github.com" />
+        <link
+          rel="preconnect"
+          href="https://api.github.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="dns-prefetch" href="https://medium.com" />
+        <link
+          rel="preconnect"
+          href="https://medium.com"
+          crossOrigin="anonymous"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON_LD }}

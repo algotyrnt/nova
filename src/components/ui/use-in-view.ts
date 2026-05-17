@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 
 /**
  * Lightweight IntersectionObserver hook that fires once when the element
- * enters the viewport. Replaces framer-motion's `whileInView`.
+ * enters the viewport.
  */
 export function useInView(margin = '-40px') {
   const ref = useRef<HTMLDivElement>(null)
@@ -12,11 +12,6 @@ export function useInView(margin = '-40px') {
   useEffect(() => {
     const el = ref.current
     if (!el) return
-
-    if (!('IntersectionObserver' in window)) {
-      queueMicrotask(() => setVisible(true))
-      return
-    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
