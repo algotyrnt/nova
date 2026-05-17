@@ -28,7 +28,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: {
     default: `${SITE_NAME} - ${AUTHOR_NAME}`,
-    template: '%s | ' + SITE_NAME,
+    template: '%s - ' + SITE_NAME,
   },
   description: SITE_DESCRIPTION,
   metadataBase: new URL(WEBSITE_URL),
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} - ${AUTHOR_NAME}`,
     description: SITE_DESCRIPTION,
     url: '/',
-    siteName: AUTHOR_NAME,
+    siteName: SITE_NAME,
     type: 'website',
     images: [
       {
@@ -83,7 +83,7 @@ const JSON_LD = JSON.stringify({
     {
       '@type': 'WebSite',
       '@id': `${WEBSITE_URL}/#website`,
-      name: AUTHOR_NAME,
+      name: SITE_NAME,
       url: WEBSITE_URL,
       description: SITE_DESCRIPTION,
     },
